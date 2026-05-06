@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://boyi6fim5bpey"]
+
+[ext_resource type="Script" uid="uid://dwnhnq8gxvg1e" path="res://Scripts/personaje.gd" id="1_uqtxj"]
+[ext_resource type="Texture2D" uid="uid://bu6t12x4x8san" path="res://icon.svg" id="2_gqidu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glouy"]
+size = Vector2(128, 128)
+
+[node name="mundo" type="Node2D" unique_id=1892424039]
+position = Vector2(542, 2175)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=665427662]
+script = ExtResource("1_uqtxj")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1565043464]
+texture = ExtResource("2_gqidu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1724074318]
+shape = SubResource("RectangleShape2D_glouy")
