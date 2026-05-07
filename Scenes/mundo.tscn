@@ -1,19 +1,136 @@
-[gd_scene format=3 uid="uid://boyi6fim5bpey"]
+[gd_scene format=4 uid="uid://boyi6fim5bpey"]
 
 [ext_resource type="Script" uid="uid://dwnhnq8gxvg1e" path="res://Scripts/personaje.gd" id="1_uqtxj"]
 [ext_resource type="Texture2D" uid="uid://bu6t12x4x8san" path="res://icon.svg" id="2_gqidu"]
+[ext_resource type="Texture2D" uid="uid://bcdrnlbdenvmr" path="res://Assets/tiles/cave-platformer-tileset-16x16.png" id="3_gqidu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glouy"]
 size = Vector2(128, 128)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uqtxj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqidu"]
+size = Vector2(1080, 20)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glouy"]
+texture = ExtResource("3_gqidu")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.0043144, 8, -1.004314, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.0043144, 8, -1.004314, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.0043144, 8, -1.004314, 8, 8, -8, 8)
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yf8a8"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_glouy")
 
 [node name="mundo" type="Node2D" unique_id=1892424039]
 position = Vector2(542, 2175)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=665427662]
+position = Vector2(14, 204)
 script = ExtResource("1_uqtxj")
+suavizado = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1565043464]
 texture = ExtResource("2_gqidu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1724074318]
 shape = SubResource("RectangleShape2D_glouy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1004798063]
+physics_material_override = SubResource("PhysicsMaterial_uqtxj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2050767879]
+position = Vector2(-2, 295)
+shape = SubResource("RectangleShape2D_gqidu")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=624686462]
+position = Vector2(304, -256)
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AADv/wQAAAAAAAAAAADw/wQAAAABAAAAAADx/wQAAAABAAAAAADy/wQAAAABAAAAAADz/wQAAAABAAAAAAD0/wQAAAABAAAAAAD1/wQAAAACAAAAAAAEAP7/AAACAAAAAAADAP7/AAABAAAAAAACAP7/AAABAAAAAAABAP7/AAABAAAAAAAAAP7/AAABAAAAAAD///7/AAAAAAAAAAD5//j/AAAAAAAAAAD///L/AAAAAAAAAADx//X/AAAAAAAAAAD+/+n/AAAAAAAAAADw/97/AAAAAAAAAAD//9v/AAAAAAAAAAAAANv/AAABAAAAAAABANv/AAABAAAAAAACANv/AAABAAAAAAADANv/AAACAAAAAAADAOn/AAACAAAAAAD+/+H/AAACAAAAAAD5/+H/AAAAAAAAAADw/+X/AAAAAAAAAADx/+X/AAABAAAAAADy/+X/AAABAAAAAADz/+X/AAABAAAAAAD0/+X/AAABAAAAAAD1/+X/AAACAAAAAAD1/97/AAACAAAAAAD0/97/AAABAAAAAADz/97/AAABAAAAAADy/97/AAABAAAAAADx/97/AAABAAAAAAD6/+H/AAABAAAAAAD7/+H/AAABAAAAAAD8/+H/AAABAAAAAAD9/+H/AAABAAAAAAD//+n/AAABAAAAAAAAAOn/AAABAAAAAAABAOn/AAABAAAAAAACAOn/AAABAAAAAAAEAPL/AAACAAAAAAD1//X/AAACAAAAAAD+//j/AAACAAAAAAD6//j/AAABAAAAAAD7//j/AAABAAAAAAD8//j/AAABAAAAAAD9//j/AAABAAAAAAD0//X/AAABAAAAAADz//X/AAABAAAAAADy//X/AAABAAAAAAAAAPL/AAABAAAAAAABAPL/AAABAAAAAAACAPL/AAABAAAAAAADAPL/AAABAAAAAAD3/+7/AAAAAAAAAAD4/+7/AAABAAAAAAD5/+7/AAABAAAAAAD6/+7/AAABAAAAAAD7/+7/AAABAAAAAAD8/+7/AAACAAAAAAA=")
+tile_set = SubResource("TileSet_yf8a8")
