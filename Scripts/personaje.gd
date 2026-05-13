@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var velocidad: float = 450
+@export var velocidad: float = 300
 @export var suavizado: float = 0.15
 @export var margen: float = 16.0
 
 # --- NUEVAS VARIABLES PARA EL SALTO/REBOTE ---
-@export var gravedad: float = 1400
-@export var fuerza_rebote: float = -950.0 # Valor negativo porque hacia arriba es -Y
+@export var gravedad: float = 3500
+@export var fuerza_rebote: float = -2400 # Valor negativo porque hacia arriba es -Y
 
 func _physics_process(delta: float) -> void:
 	# 1. Movimiento horizontal (Acelerómetro)
