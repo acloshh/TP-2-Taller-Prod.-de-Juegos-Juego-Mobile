@@ -15,12 +15,13 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqidu"]
 size = Vector2(1080, 20)
 
-[node name="mundo" type="Node2D" unique_id=1892424039 node_paths=PackedStringArray("jugador", "camara", "ui_game_over")]
+[node name="mundo" type="Node2D" unique_id=1892424039 node_paths=PackedStringArray("jugador", "camara", "ui_game_over", "etiqueta_puntos")]
 script = ExtResource("1_gqidu")
 plataforma_escena = ExtResource("2_glouy")
 jugador = NodePath("CharacterBody2D")
 camara = NodePath("Camera2D")
 ui_game_over = NodePath("CanvasLayer/PantallaGameOver")
+etiqueta_puntos = NodePath("CanvasLayer/MarcadorPuntos")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=665427662]
 position = Vector2(540, 2393)
@@ -51,7 +52,7 @@ jugador = NodePath("../CharacterBody2D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1750785894]
 
-[node name="PantallaGameOver" type="Control" parent="CanvasLayer" unique_id=1591099070]
+[node name="PantallaGameOver" type="Control" parent="CanvasLayer" unique_id=1591099070 node_paths=PackedStringArray("etiqueta_puntaje_final", "etiqueta_mejor_puntaje")]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -61,6 +62,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_qxsm7")
+etiqueta_puntaje_final = NodePath("ColorRect/EtiquetaPuntajeFinal")
+etiqueta_mejor_puntaje = NodePath("ColorRect/EtiquetaMejorPuntaje")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/PantallaGameOver" unique_id=1793918677]
 layout_mode = 1
@@ -79,12 +82,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -124.5
-offset_top = -38.5
+offset_top = 521.5
 offset_right = 124.5
-offset_bottom = 38.5
+offset_bottom = 598.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 64
 text = "REINICIAR"
 
 [node name="Label" type="Label" parent="CanvasLayer/PantallaGameOver/ColorRect" unique_id=1951535504]
@@ -93,13 +96,51 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -235.5
-offset_bottom = -212.5
+offset_top = -554.5
+offset_bottom = -485.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "GAME OVER"
+theme_override_font_sizes/font_size = 64
+text = "¡GAME OVER!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="EtiquetaMejorPuntaje" type="Label" parent="CanvasLayer/PantallaGameOver/ColorRect" unique_id=1827882122]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 140.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "HIGH SCORE: "
+horizontal_alignment = 1
+
+[node name="EtiquetaPuntajeFinal" type="Label" parent="CanvasLayer/PantallaGameOver/ColorRect" unique_id=1497105173]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -262.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "PUNTAJE: "
+horizontal_alignment = 1
+
+[node name="MarcadorPuntos" type="Label" parent="CanvasLayer" unique_id=690216976]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 120.0
+offset_bottom = 208.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/PantallaGameOver/ColorRect/Button" to="CanvasLayer/PantallaGameOver" method="_on_button_pressed"]

@@ -1,7 +1,12 @@
 extends Control
 
+@export var etiqueta_puntaje_final: Label
+@export var etiqueta_mejor_puntaje: Label
+
+func mostrar_resultados(puntos_actuales: int, mejor_puntaje: int) -> void:
+	etiqueta_puntaje_final.text = "Puntaje Final: " + str(puntos_actuales)
+	etiqueta_mejor_puntaje.text = "Mejor Puntuación: " + str(mejor_puntaje)
+
 func _on_button_pressed() -> void:
-	# 1. Quitamos la pausa del juego
 	get_tree().paused = false
-	# 2. Recargamos la escena actual para empezar de cero
 	get_tree().reload_current_scene()
