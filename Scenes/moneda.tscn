@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://u1wr1q0wy4ti"]
+
+[ext_resource type="Texture2D" uid="uid://ugvmk7guutky" path="res://Assets/moneda/moneda.png" id="1_gvj4e"]
+[ext_resource type="Script" uid="uid://c1vbrphrwaae3" path="res://Scripts/area_2d.gd" id="2_j5x4i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5x4i"]
+radius = 32.01562
+
+[node name="Area2D" type="Area2D" unique_id=858260921]
+script = ExtResource("2_j5x4i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2122848901]
+position = Vector2(0, -31)
+shape = SubResource("CircleShape2D_j5x4i")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2126109584]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1905815024]
+scale = Vector2(4, 4)
+texture = ExtResource("1_gvj4e")
+offset = Vector2(1, -4.5)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

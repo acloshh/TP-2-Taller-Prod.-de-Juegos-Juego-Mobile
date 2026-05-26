@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bk78jn7xa2wqv"]
+
+[ext_resource type="Script" uid="uid://beddb7wo2056h" path="res://Scripts/menu_principal.gd" id="1_3k1ur"]
+[ext_resource type="Texture2D" uid="uid://baod6yapoiqj8" path="res://Assets/botones/go normal.png" id="2_8kh3b"]
+[ext_resource type="Texture2D" uid="uid://dmbxja0hbqbib" path="res://Assets/botones/go pressed.png" id="3_vtrnu"]
+[ext_resource type="Texture2D" uid="uid://1b18hre7csfl" path="res://Assets/botones/shop normal.png" id="4_hbekh"]
+[ext_resource type="Texture2D" uid="uid://cbuiivprss2sf" path="res://Assets/botones/shop pressed.png" id="5_pkrck"]
+
+[node name="Control" type="Control" unique_id=1333828634]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3k1ur")
+metadata/_edit_vertical_guides_ = [540.0]
+metadata/_edit_horizontal_guides_ = [1230.0]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1844418162]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 2460.0
+color = Color(0, 0, 0, 0.39607844)
+
+[node name="Titulo" type="Label" parent="." unique_id=1733354046]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 537.0
+offset_right = 989.0
+offset_bottom = 674.0
+theme_override_font_sizes/font_size = 100
+text = "TITULO DEL JUEGO"
+
+[node name="BotonJugar" type="TextureButton" parent="." unique_id=1840544590]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 1154.0
+offset_right = 415.0
+offset_bottom = 1170.0
+scale = Vector2(11, 11)
+texture_normal = ExtResource("2_8kh3b")
+texture_pressed = ExtResource("3_vtrnu")
+
+[node name="BotonTienda" type="TextureButton" parent="." unique_id=794410800]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 1614.0001
+offset_right = 414.0
+offset_bottom = 1630.0001
+scale = Vector2(11, 11)
+texture_normal = ExtResource("4_hbekh")
+texture_pressed = ExtResource("5_pkrck")
+
+[connection signal="pressed" from="BotonJugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="BotonTienda" to="." method="_on_boton_tienda_pressed"]

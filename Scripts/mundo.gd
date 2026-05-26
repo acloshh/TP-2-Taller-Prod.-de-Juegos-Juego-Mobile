@@ -4,29 +4,31 @@ extends Node2D
 @export var jugador: CharacterBody2D
 @export var camara: Camera2D
 @export var ui_game_over: Control
-@export var etiqueta_puntos: Label # <-- Nueva variable para la etiqueta
+@export var etiqueta_puntos: Label
+
+@export var moneda_escena: PackedScene
+@export var etiqueta_monedas: Label
 
 @export var cantidad_inicial: int = 15
-@export var distancia_y: float = 350
+@export var distancia_y: float = 420
 @export var margen_x: float = 150.0
 
 var altura_actual: float = 0.0
-var puntos: int = 0 # <-- Variable para llevar la cuenta
-static var mejor_puntaje: int = 0
+var puntos: int = 0
 
 func _ready() -> void:
+	# Mostramos el total de monedas guardadas apenas arranca el juego, leyéndolas del Autoload
+	if etiqueta_monedas != null:
+		etiqueta_monedas.text = "Monedas: " + str(DatosGlobales.total_monedas)
+		
 	if plataforma_escena == null or jugador == null:
 		return
 		
 	altura_actual = jugador.global_position.y - distancia_y
 	
-	# Creamos la plataforma inicial y la conectamos
 	var primera_plataforma = plataforma_escena.instantiate()
 	primera_plataforma.global_position = Vector2(jugador.global_position.x, altura_actual)
-	
-	# Conectamos la señal para que sume puntos
 	primera_plataforma.plataforma_superada.connect(sumar_punto)
-	
 	add_child(primera_plataforma)
 	
 	altura_actual -= distancia_y
@@ -52,25 +54,40 @@ func generar_plataforma() -> void:
 	altura_actual -= distancia_y
 	nueva_plataforma.global_position = Vector2(x_aleatorio, altura_actual)
 	
-	# IMPORTANTE: Conectar la señal de cada plataforma nueva
 	nueva_plataforma.plataforma_superada.connect(sumar_punto)
+	
+	if moneda_escena != null and randi() % 3 == 0:
+		var nueva_moneda = moneda_escena.instantiate()
+		nueva_moneda.moneda_recogida.connect(sumar_moneda)
+		nueva_moneda.position = Vector2(0, -40.0)
+		nueva_plataforma.add_child(nueva_moneda)
 	
 	add_child(nueva_plataforma)
 
-# Función que se ejecuta cada vez que una plataforma sale de pantalla
+func sumar_point() -> void:
+	pass # Nota: mantenemos la consistencia con tus funciones de puntos
+
 func sumar_punto() -> void:
 	puntos += 1
 	if etiqueta_puntos != null:
 		etiqueta_puntos.text = str(puntos)
 
+func sumar_moneda() -> void:
+	# Sumamos directamente al Autoload
+	DatosGlobales.total_monedas += 1
+	if etiqueta_monedas != null:
+		etiqueta_monedas.text = "Monedas: " + str(DatosGlobales.total_monedas)
+
 func activar_game_over() -> void:
-	# 1. Comprobar si superó el récord
-	if puntos > mejor_puntaje:
-		mejor_puntaje = puntos
+	# Comparamos y guardamos el récord usando el Autoload
+	if puntos > DatosGlobales.mejor_puntaje:
+		DatosGlobales.mejor_puntaje = puntos
 	
-	# 2. Pasar los datos a la pantalla de Game Over antes de mostrarla
+	# Le decimos al Autoload que guarde todo
+	DatosGlobales.guardar_datos()
+	
 	if ui_game_over.has_method("mostrar_resultados"):
-		ui_game_over.mostrar_resultados(puntos, mejor_puntaje)
+		ui_game_over.mostrar_resultados(puntos, DatosGlobales.mejor_puntaje)
 	
 	ui_game_over.show()
 	get_tree().paused = true

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="juego mobile"
-run/main_scene="uid://boyi6fim5bpey"
+run/main_scene="uid://bk78jn7xa2wqv"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+DatosGlobales="*uid://6rqc2ta7bnkh"
 
 [display]
 
@@ -37,3 +41,4 @@ sensors/enable_gravity=true
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.2712937, 0.4106176, 0.6455616, 1)
