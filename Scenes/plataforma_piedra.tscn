@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dwhimlg017shj"]
+
+[ext_resource type="Texture2D" uid="uid://bocth8sq3xkxr" path="res://Assets/PlataformaPiedraChica.png" id="1_c6fgb"]
+[ext_resource type="Script" uid="uid://b6tx4gdvch1y7" path="res://Scripts/plataforma_piedra.gd" id="1_qkkcm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qkkcm"]
+texture = ExtResource("1_c6fgb")
+texture_region_size = Vector2i(256, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -32, -128, 32, 128, 32, 128, -32)
+
+[sub_resource type="TileSet" id="TileSet_21nnr"]
+tile_size = Vector2i(256, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_qkkcm")
+
+[node name="PlataformaPiedra" type="Node2D" unique_id=688550094]
+script = ExtResource("1_qkkcm")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1191327676]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_21nnr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1226672106]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

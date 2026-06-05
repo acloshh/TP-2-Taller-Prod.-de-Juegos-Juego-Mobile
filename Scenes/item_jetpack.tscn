@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dlg4oungl00t7"]
+
+[ext_resource type="Script" uid="uid://xs00xxr4f374" path="res://Scripts/item_jetpack.gd" id="1_dqvon"]
+[ext_resource type="Texture2D" uid="uid://mcp6dkl4wopp" path="res://Assets/jetpack/pngwing.com (1).png" id="2_rqmyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va0nw"]
+size = Vector2(59, 62)
+
+[node name="ItemJetpack" type="Area2D" unique_id=931702809]
+script = ExtResource("1_dqvon")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1306585835]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_rqmyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=851039376]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_va0nw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

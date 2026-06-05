@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bk78jn7xa2wqv"]
 
 [ext_resource type="Script" uid="uid://beddb7wo2056h" path="res://Scripts/menu_principal.gd" id="1_3k1ur"]
-[ext_resource type="Texture2D" uid="uid://baod6yapoiqj8" path="res://Assets/botones/go normal.png" id="2_8kh3b"]
-[ext_resource type="Texture2D" uid="uid://dmbxja0hbqbib" path="res://Assets/botones/go pressed.png" id="3_vtrnu"]
-[ext_resource type="Texture2D" uid="uid://1b18hre7csfl" path="res://Assets/botones/shop normal.png" id="4_hbekh"]
-[ext_resource type="Texture2D" uid="uid://cbuiivprss2sf" path="res://Assets/botones/shop pressed.png" id="5_pkrck"]
+[ext_resource type="Texture2D" uid="uid://dy7vop1fq0dej" path="res://Assets/botones/BTN_GoNormal.png" id="2_8kh3b"]
+[ext_resource type="Texture2D" uid="uid://dju3d4nfkqhqy" path="res://Assets/botones/BTN_GoPressed.png" id="3_vtrnu"]
+[ext_resource type="Texture2D" uid="uid://uwxq08g02ij6" path="res://Assets/botones/BTN_ShopNormal.png" id="4_hbekh"]
+[ext_resource type="Texture2D" uid="uid://dngl0wb0y4rpg" path="res://Assets/botones/BTN_ShopPressed.png" id="5_pkrck"]
 
 [node name="Control" type="Control" unique_id=1333828634]
 layout_mode = 3
@@ -34,21 +34,21 @@ text = "TITULO DEL JUEGO"
 
 [node name="BotonJugar" type="TextureButton" parent="." unique_id=1840544590]
 layout_mode = 0
-offset_left = 383.0
+offset_left = 348.0
 offset_top = 1154.0
-offset_right = 415.0
-offset_bottom = 1170.0
-scale = Vector2(11, 11)
+offset_right = 476.0
+offset_bottom = 1218.0
+scale = Vector2(3, 3)
 texture_normal = ExtResource("2_8kh3b")
 texture_pressed = ExtResource("3_vtrnu")
 
 [node name="BotonTienda" type="TextureButton" parent="." unique_id=794410800]
 layout_mode = 0
-offset_left = 382.0
-offset_top = 1614.0001
-offset_right = 414.0
-offset_bottom = 1630.0001
-scale = Vector2(11, 11)
+offset_left = 348.0
+offset_top = 1614.0
+offset_right = 476.0
+offset_bottom = 1678.0
+scale = Vector2(3, 3)
 texture_normal = ExtResource("4_hbekh")
 texture_pressed = ExtResource("5_pkrck")
 

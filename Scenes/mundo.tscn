@@ -3,15 +3,20 @@
 [ext_resource type="Script" uid="uid://cds71av0gv3qb" path="res://Scripts/mundo.gd" id="1_gqidu"]
 [ext_resource type="Script" uid="uid://dwnhnq8gxvg1e" path="res://Scripts/personaje.gd" id="1_uqtxj"]
 [ext_resource type="PackedScene" uid="uid://dp2w6thvjeqfo" path="res://Scenes/plataforma.tscn" id="2_glouy"]
-[ext_resource type="Texture2D" uid="uid://bu6t12x4x8san" path="res://icon.svg" id="2_gqidu"]
+[ext_resource type="PackedScene" uid="uid://dwhimlg017shj" path="res://Scenes/plataforma_piedra.tscn" id="3_has1v"]
 [ext_resource type="PackedScene" uid="uid://u1wr1q0wy4ti" path="res://Scenes/moneda.tscn" id="3_i8avv"]
+[ext_resource type="Texture2D" uid="uid://df4rq67wxaw8j" path="res://Assets/sprite personaje/Personaje001.png" id="5_7j6if"]
+[ext_resource type="PackedScene" uid="uid://cqjhrq4wg45lo" path="res://Scenes/item_iman.tscn" id="5_m1vgi"]
 [ext_resource type="Script" uid="uid://cq3nqowntbthj" path="res://Scripts/camera_2d.gd" id="5_yf8a8"]
+[ext_resource type="PackedScene" uid="uid://dlg4oungl00t7" path="res://Scenes/item_jetpack.tscn" id="6_1bodn"]
 [ext_resource type="Script" uid="uid://bhx4g7jdilr4j" path="res://Scripts/pantalla_game_over.gd" id="6_qxsm7"]
-[ext_resource type="Texture2D" uid="uid://ggcdrptba87m" path="res://Assets/botones/menu normal.png" id="8_7j6if"]
-[ext_resource type="Texture2D" uid="uid://cdqktcv2gtlu6" path="res://Assets/botones/menu pressed.png" id="9_has1v"]
+[ext_resource type="Texture2D" uid="uid://bwvbk3j2spyy4" path="res://Assets/botones/BTN_MenuNormal.png" id="8_7j6if"]
+[ext_resource type="Texture2D" uid="uid://d34ai0ayyokw4" path="res://Assets/botones/BTN_MenuPressed.png" id="9_has1v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glouy"]
-size = Vector2(128, 128)
+size = Vector2(135, 152)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_has1v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uqtxj"]
 
@@ -21,12 +26,16 @@ size = Vector2(1080, 20)
 [node name="mundo" type="Node2D" unique_id=1892424039 node_paths=PackedStringArray("jugador", "camara", "ui_game_over", "etiqueta_puntos", "etiqueta_monedas")]
 script = ExtResource("1_gqidu")
 plataforma_escena = ExtResource("2_glouy")
+escena_plataforma_piedra = ExtResource("3_has1v")
 jugador = NodePath("CharacterBody2D")
 camara = NodePath("Camera2D")
 ui_game_over = NodePath("CanvasLayer/PantallaGameOver")
 etiqueta_puntos = NodePath("CanvasLayer/MarcadorPuntos")
 moneda_escena = ExtResource("3_i8avv")
 etiqueta_monedas = NodePath("CanvasLayer/MarcadorMonedas")
+escena_item_iman = ExtResource("5_m1vgi")
+escena_item_jetpack = ExtResource("6_1bodn")
+metadata/_edit_vertical_guides_ = [540.0]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=665427662]
 position = Vector2(540, 2393)
@@ -34,10 +43,25 @@ script = ExtResource("1_uqtxj")
 suavizado = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1565043464]
-texture = ExtResource("2_gqidu")
+position = Vector2(0, -10)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_7j6if")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1724074318]
+position = Vector2(2.5, -9)
 shape = SubResource("RectangleShape2D_glouy")
+
+[node name="AreaIman" type="Area2D" parent="CharacterBody2D" unique_id=537220027]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AreaIman" unique_id=1308571981]
+shape = SubResource("CircleShape2D_has1v")
+
+[node name="TemporizadorIman" type="Timer" parent="CharacterBody2D" unique_id=1168211010]
+one_shot = true
+
+[node name="TemporizadorJetpack" type="Timer" parent="CharacterBody2D" unique_id=571727320]
+one_shot = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1004798063]
 physics_material_override = SubResource("PhysicsMaterial_uqtxj")
@@ -97,20 +121,20 @@ theme_override_font_sizes/font_size = 64
 text = "REINICIAR"
 flat = true
 
-[node name="BotonVolver" type="TextureButton" parent="CanvasLayer/PantallaGameOver/ColorRect" unique_id=834405972]
+[node name="BotonMenu" type="TextureButton" parent="CanvasLayer/PantallaGameOver/ColorRect" unique_id=834405972]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -162.49997
-offset_top = 816.0001
-offset_right = -130.49997
-offset_bottom = 832.0
+offset_left = -191.5
+offset_top = 792.0
+offset_right = -63.5
+offset_bottom = 856.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(11, 11)
+scale = Vector2(3, 3)
 texture_normal = ExtResource("8_7j6if")
 texture_pressed = ExtResource("9_has1v")
 
@@ -175,5 +199,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
 text = "Monedas:  0"
 
+[connection signal="area_entered" from="CharacterBody2D/AreaIman" to="CharacterBody2D" method="_on_area_iman_area_entered"]
+[connection signal="timeout" from="CharacterBody2D/TemporizadorIman" to="CharacterBody2D" method="_on_temporizador_iman_timeout"]
+[connection signal="timeout" from="CharacterBody2D/TemporizadorJetpack" to="." method="_on_temporizador_jetpack_timeout"]
+[connection signal="timeout" from="CharacterBody2D/TemporizadorJetpack" to="CharacterBody2D" method="_on_temporizador_jetpack_timeout"]
 [connection signal="pressed" from="CanvasLayer/PantallaGameOver/ColorRect/Button" to="CanvasLayer/PantallaGameOver" method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PantallaGameOver/ColorRect/BotonVolver" to="CanvasLayer/PantallaGameOver" method="_on_boton_volver_pressed"]
+[connection signal="pressed" from="CanvasLayer/PantallaGameOver/ColorRect/BotonMenu" to="CanvasLayer/PantallaGameOver" method="_on_boton_volver_pressed"]
