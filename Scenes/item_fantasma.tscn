@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b3eiyy7qtsaxa"]
+
+[ext_resource type="Script" uid="uid://c7pni4qcq4e30" path="res://Scripts/item_fantasma.gd" id="1_30r08"]
+[ext_resource type="Texture2D" uid="uid://bgdv55427g3i4" path="res://Assets/fantasma/Ghost/ghost-Sheet.png" id="2_m5ey1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whi5r"]
+atlas = ExtResource("2_m5ey1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l2uen"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whi5r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we5jw"]
+size = Vector2(59, 54)
+
+[node name="ItemFantasma" type="Area2D" unique_id=341345660]
+script = ExtResource("1_30r08")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1250535613]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_l2uen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1719585136]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_we5jw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

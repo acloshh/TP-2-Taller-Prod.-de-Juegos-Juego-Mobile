@@ -10,8 +10,11 @@
 [ext_resource type="Script" uid="uid://cq3nqowntbthj" path="res://Scripts/camera_2d.gd" id="5_yf8a8"]
 [ext_resource type="PackedScene" uid="uid://dlg4oungl00t7" path="res://Scenes/item_jetpack.tscn" id="6_1bodn"]
 [ext_resource type="Script" uid="uid://bhx4g7jdilr4j" path="res://Scripts/pantalla_game_over.gd" id="6_qxsm7"]
+[ext_resource type="PackedScene" uid="uid://b3eiyy7qtsaxa" path="res://Scenes/item_fantasma.tscn" id="7_ppd06"]
 [ext_resource type="Texture2D" uid="uid://bwvbk3j2spyy4" path="res://Assets/botones/BTN_MenuNormal.png" id="8_7j6if"]
 [ext_resource type="Texture2D" uid="uid://d34ai0ayyokw4" path="res://Assets/botones/BTN_MenuPressed.png" id="9_has1v"]
+[ext_resource type="Texture2D" uid="uid://b535agrpgpfrx" path="res://Assets/corazon con alas/pngwing.com.png" id="13_amofe"]
+[ext_resource type="Texture2D" uid="uid://c2dw4bnsuwkna" path="res://Assets/moneda/monedaSpriteSheet.png" id="14_ppd06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glouy"]
 size = Vector2(135, 152)
@@ -23,7 +26,22 @@ size = Vector2(135, 152)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqidu"]
 size = Vector2(1080, 20)
 
-[node name="mundo" type="Node2D" unique_id=1892424039 node_paths=PackedStringArray("jugador", "camara", "ui_game_over", "etiqueta_puntos", "etiqueta_monedas")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4e5f"]
+atlas = ExtResource("14_ppd06")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hppdt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4e5f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="mundo" type="Node2D" unique_id=1892424039 node_paths=PackedStringArray("jugador", "camara", "ui_game_over", "etiqueta_puntos", "etiqueta_monedas", "icono_vida_extra")]
 script = ExtResource("1_gqidu")
 plataforma_escena = ExtResource("2_glouy")
 escena_plataforma_piedra = ExtResource("3_has1v")
@@ -35,7 +53,10 @@ moneda_escena = ExtResource("3_i8avv")
 etiqueta_monedas = NodePath("CanvasLayer/MarcadorMonedas")
 escena_item_iman = ExtResource("5_m1vgi")
 escena_item_jetpack = ExtResource("6_1bodn")
+escena_item_fantasma = ExtResource("7_ppd06")
+icono_vida_extra = NodePath("CanvasLayer/IconoVidaExtra")
 metadata/_edit_vertical_guides_ = [540.0]
+metadata/_edit_horizontal_guides_ = [54.0, 123.0]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=665427662]
 position = Vector2(540, 2393)
@@ -61,6 +82,9 @@ shape = SubResource("CircleShape2D_has1v")
 one_shot = true
 
 [node name="TemporizadorJetpack" type="Timer" parent="CharacterBody2D" unique_id=571727320]
+one_shot = true
+
+[node name="TemporizadorFantasma" type="Timer" parent="CharacterBody2D" unique_id=1380417685]
 one_shot = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1004798063]
@@ -194,10 +218,25 @@ horizontal_alignment = 1
 [node name="MarcadorMonedas" type="Label" parent="CanvasLayer" unique_id=532463788]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 88.0
+offset_left = 126.0
+offset_top = 46.0
+offset_right = 126.0
+offset_bottom = 134.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 64
-text = "Monedas:  0"
+
+[node name="IconoVidaExtra" type="TextureRect" parent="CanvasLayer" unique_id=1313254548]
+offset_left = 915.0
+offset_top = 45.0
+offset_right = 1037.0
+offset_bottom = 132.0
+texture = ExtResource("13_amofe")
+expand_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1819344376]
+position = Vector2(88, 88)
+sprite_frames = SubResource("SpriteFrames_hppdt")
 
 [connection signal="area_entered" from="CharacterBody2D/AreaIman" to="CharacterBody2D" method="_on_area_iman_area_entered"]
 [connection signal="timeout" from="CharacterBody2D/TemporizadorIman" to="CharacterBody2D" method="_on_temporizador_iman_timeout"]

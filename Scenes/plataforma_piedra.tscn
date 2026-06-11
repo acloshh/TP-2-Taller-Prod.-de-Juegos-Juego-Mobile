@@ -18,6 +18,7 @@ sources/0 = SubResource("TileSetAtlasSource_qkkcm")
 script = ExtResource("1_qkkcm")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1191327676]
+position = Vector2(-128, 0)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_21nnr")
 

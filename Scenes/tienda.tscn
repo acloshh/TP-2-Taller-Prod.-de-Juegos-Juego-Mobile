@@ -2,7 +2,27 @@
 
 [ext_resource type="Script" uid="uid://d0b17x531v3hb" path="res://Scripts/tienda.gd" id="1_ar8g2"]
 [ext_resource type="Texture2D" uid="uid://bu2u24u315jr4" path="res://Assets/botones/BTN_BackNormal.png" id="2_2bbwx"]
+[ext_resource type="Texture2D" uid="uid://c2dw4bnsuwkna" path="res://Assets/moneda/monedaSpriteSheet.png" id="2_v1f1d"]
 [ext_resource type="Texture2D" uid="uid://cmxlauioe23na" path="res://Assets/botones/BTN_BackPressed.png" id="3_o5wvw"]
+[ext_resource type="Texture2D" uid="uid://qdbpc1jtfubg" path="res://Assets/iman/pngwing.com.png" id="5_n565k"]
+[ext_resource type="Texture2D" uid="uid://mcp6dkl4wopp" path="res://Assets/jetpack/pngwing.com (1).png" id="6_18aor"]
+[ext_resource type="Texture2D" uid="uid://wj3dclb4pae4" path="res://Assets/fantasma/fantasma.png" id="7_ykoqq"]
+[ext_resource type="Texture2D" uid="uid://b535agrpgpfrx" path="res://Assets/corazon con alas/pngwing.com.png" id="8_umihc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm5oc"]
+atlas = ExtResource("2_v1f1d")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pkbd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm5oc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Control" type="Control" unique_id=381795342 node_paths=PackedStringArray("etiqueta_monedas", "etiqueta_nivel_iman", "etiqueta_costo_iman", "etiqueta_nivel_jetpack", "etiqueta_costo_jetpack", "etiqueta_nivel_fantasma", "etiqueta_costo_fantasma", "etiqueta_nivel_vida", "etiqueta_costo_vida")]
 layout_mode = 3
@@ -12,34 +32,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ar8g2")
-etiqueta_monedas = NodePath("EtiquetaMonedasTienda")
+etiqueta_monedas = NodePath("Monedas")
 etiqueta_nivel_iman = NodePath("VBoxContainer/FilaIman/CajaInfo/NivelIman")
 etiqueta_costo_iman = NodePath("VBoxContainer/FilaIman/CajaInfo/Label")
 etiqueta_nivel_jetpack = NodePath("VBoxContainer/FilaJetpack/CajaInfo/NivelJetpack")
 etiqueta_costo_jetpack = NodePath("VBoxContainer/FilaJetpack/CajaInfo/Label")
-etiqueta_nivel_fantasma = NodePath("VBoxContainer/FilaFantasma/CajaInfo/NivelFantasma")
-etiqueta_costo_fantasma = NodePath("VBoxContainer/FilaFantasma/CajaInfo/Label")
-etiqueta_nivel_vida = NodePath("VBoxContainer/FilaVida/CajaInfo/NivelVida")
-etiqueta_costo_vida = NodePath("VBoxContainer/FilaVida/CajaInfo/Label")
-metadata/_edit_vertical_guides_ = [540.0]
+etiqueta_nivel_fantasma = NodePath("VBoxContainer2/FilaFantasma/CajaInfo/NivelFantasma")
+etiqueta_costo_fantasma = NodePath("VBoxContainer2/FilaFantasma/CajaInfo/Label")
+etiqueta_nivel_vida = NodePath("VBoxContainer2/FilaVida/CajaInfo/NivelVida")
+etiqueta_costo_vida = NodePath("VBoxContainer2/FilaVida/CajaInfo/Label")
+metadata/_edit_vertical_guides_ = [540.0, 270.0, 810.0]
 metadata/_edit_horizontal_guides_ = [1230.0]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=241987216]
+visible = false
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 2460.0
 color = Color(0, 0, 0, 0.39607844)
 
-[node name="EtiquetaMonedasTienda" type="Label" parent="." unique_id=4560955]
+[node name="EtiquetaMonedasTienda" type="AnimatedSprite2D" parent="." unique_id=2108477241]
+position = Vector2(451, 472)
+sprite_frames = SubResource("SpriteFrames_0pkbd")
+
+[node name="Monedas" type="Label" parent="." unique_id=1726538211]
 layout_mode = 0
-offset_left = 276.0
-offset_top = 261.0
-offset_right = 540.0
-offset_bottom = 381.0
-theme_override_font_sizes/font_size = 56
-text = "Monedas:"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 493.0
+offset_top = 425.0
+offset_right = 533.0
+offset_bottom = 513.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 64
 
 [node name="BotonVolver" type="TextureButton" parent="." unique_id=1177706887]
 layout_mode = 0
@@ -52,21 +75,28 @@ texture_normal = ExtResource("2_2bbwx")
 texture_pressed = ExtResource("3_o5wvw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=199910773]
-layout_mode = 0
-offset_left = 401.0
-offset_top = 680.0
-offset_right = 971.0
-offset_bottom = 822.0
-theme_override_constants/separation = 20
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 88.00001
+offset_top = -250.0
+offset_right = 88.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+theme_override_constants/separation = 100
 alignment = 1
 
 [node name="FilaIman" type="HBoxContainer" parent="VBoxContainer" unique_id=225233284]
 layout_mode = 2
 
-[node name="NombreIman" type="Label" parent="VBoxContainer/FilaIman" unique_id=1050352563]
+[node name="NombreIman" type="TextureRect" parent="VBoxContainer/FilaIman" unique_id=1575517564]
 layout_mode = 2
-theme_override_font_sizes/font_size = 56
-text = "Iman"
+texture = ExtResource("5_n565k")
+expand_mode = 2
 
 [node name="CajaInfo" type="VBoxContainer" parent="VBoxContainer/FilaIman" unique_id=583964080]
 layout_mode = 2
@@ -90,10 +120,10 @@ text = "Comprar"
 [node name="FilaJetpack" type="HBoxContainer" parent="VBoxContainer" unique_id=1221977886]
 layout_mode = 2
 
-[node name="NombreJetpack" type="Label" parent="VBoxContainer/FilaJetpack" unique_id=368842821]
+[node name="NombreJetpack" type="TextureRect" parent="VBoxContainer/FilaJetpack" unique_id=321666936]
 layout_mode = 2
-theme_override_font_sizes/font_size = 56
-text = "Jetpack"
+texture = ExtResource("6_18aor")
+expand_mode = 2
 
 [node name="CajaInfo" type="VBoxContainer" parent="VBoxContainer/FilaJetpack" unique_id=1572161413]
 layout_mode = 2
@@ -114,56 +144,72 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Comprar"
 
-[node name="FilaFantasma" type="HBoxContainer" parent="VBoxContainer" unique_id=594403484]
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1449685485]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 557.00006
+offset_top = -250.0
+offset_right = 557.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+theme_override_constants/separation = 100
+
+[node name="FilaFantasma" type="HBoxContainer" parent="VBoxContainer2" unique_id=594403484]
 layout_mode = 2
 
-[node name="NombreFantasma" type="Label" parent="VBoxContainer/FilaFantasma" unique_id=1800826520]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer2/FilaFantasma" unique_id=1071608060]
 layout_mode = 2
-theme_override_font_sizes/font_size = 56
-text = "Fantasma"
+texture = ExtResource("7_ykoqq")
+expand_mode = 2
 
-[node name="CajaInfo" type="VBoxContainer" parent="VBoxContainer/FilaFantasma" unique_id=1519256249]
+[node name="CajaInfo" type="VBoxContainer" parent="VBoxContainer2/FilaFantasma" unique_id=1519256249]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="NivelFantasma" type="Label" parent="VBoxContainer/FilaFantasma/CajaInfo" unique_id=1929084968]
+[node name="NivelFantasma" type="Label" parent="VBoxContainer2/FilaFantasma/CajaInfo" unique_id=1929084968]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Nivel: 0"
 
-[node name="Label" type="Label" parent="VBoxContainer/FilaFantasma/CajaInfo" unique_id=1689272296]
+[node name="Label" type="Label" parent="VBoxContainer2/FilaFantasma/CajaInfo" unique_id=1689272296]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Costo: 120"
 
-[node name="ComprarFantasma" type="Button" parent="VBoxContainer/FilaFantasma/CajaInfo" unique_id=114877443]
+[node name="ComprarFantasma" type="Button" parent="VBoxContainer2/FilaFantasma/CajaInfo" unique_id=114877443]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Comprar"
 
-[node name="FilaVida" type="HBoxContainer" parent="VBoxContainer" unique_id=645940494]
+[node name="FilaVida" type="HBoxContainer" parent="VBoxContainer2" unique_id=645940494]
 layout_mode = 2
 
-[node name="NombreVida" type="Label" parent="VBoxContainer/FilaVida" unique_id=974880504]
+[node name="NombreVida" type="TextureRect" parent="VBoxContainer2/FilaVida" unique_id=451139725]
 layout_mode = 2
-theme_override_font_sizes/font_size = 56
-text = "Vida Extra"
+texture = ExtResource("8_umihc")
+expand_mode = 2
+stretch_mode = 5
 
-[node name="CajaInfo" type="VBoxContainer" parent="VBoxContainer/FilaVida" unique_id=915158725]
+[node name="CajaInfo" type="VBoxContainer" parent="VBoxContainer2/FilaVida" unique_id=915158725]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="NivelVida" type="Label" parent="VBoxContainer/FilaVida/CajaInfo" unique_id=963994275]
+[node name="NivelVida" type="Label" parent="VBoxContainer2/FilaVida/CajaInfo" unique_id=963994275]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Nivel: 0"
 
-[node name="Label" type="Label" parent="VBoxContainer/FilaVida/CajaInfo" unique_id=1835606461]
+[node name="Label" type="Label" parent="VBoxContainer2/FilaVida/CajaInfo" unique_id=1835606461]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Costo: 350"
 
-[node name="ComprarVida" type="Button" parent="VBoxContainer/FilaVida/CajaInfo" unique_id=1744453312]
+[node name="ComprarVida" type="Button" parent="VBoxContainer2/FilaVida/CajaInfo" unique_id=1744453312]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Comprar"
@@ -171,5 +217,5 @@ text = "Comprar"
 [connection signal="pressed" from="BotonVolver" to="." method="_on_boton_volver_pressed"]
 [connection signal="pressed" from="VBoxContainer/FilaIman/CajaInfo/ComprarIman" to="." method="_on_comprar_iman_pressed"]
 [connection signal="pressed" from="VBoxContainer/FilaJetpack/CajaInfo/ComprarJetpack" to="." method="_on_comprar_jetpack_pressed"]
-[connection signal="pressed" from="VBoxContainer/FilaFantasma/CajaInfo/ComprarFantasma" to="." method="_on_comprar_fantasma_pressed"]
-[connection signal="pressed" from="VBoxContainer/FilaVida/CajaInfo/ComprarVida" to="." method="_on_comprar_vida_pressed"]
+[connection signal="pressed" from="VBoxContainer2/FilaFantasma/CajaInfo/ComprarFantasma" to="." method="_on_comprar_fantasma_pressed"]
+[connection signal="pressed" from="VBoxContainer2/FilaVida/CajaInfo/ComprarVida" to="." method="_on_comprar_vida_pressed"]
