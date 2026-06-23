@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bqt6rox3b7j8u"]
+
+[ext_resource type="Texture2D" uid="uid://uwxq08g02ij6" path="res://Assets/botones/BTN_ShopNormal.png" id="1_2lyux"]
+[ext_resource type="Texture2D" uid="uid://dngl0wb0y4rpg" path="res://Assets/botones/BTN_ShopPressed.png" id="2_na37l"]
+
+[node name="Control" type="Control" unique_id=1927026052]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 2460.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=486061911]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 2460.0
+color = Color(0, 0, 0, 0.39607844)
+
+[node name="BotonTienda" type="TextureButton" parent="." unique_id=1079470802]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 1806.0
+offset_right = 476.0
+offset_bottom = 1870.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("1_2lyux")
+texture_pressed = ExtResource("2_na37l")
