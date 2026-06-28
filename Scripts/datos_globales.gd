@@ -3,13 +3,18 @@ extends Node
 var total_monedas: int = 0
 var mejor_puntaje: int = 0
 
+
+
+var skin_equipada: String = "base"
+var skins_desbloqueadas: Array = ["base", "tigreninja", "turista"]
+
 # --- INVENTARIO DE POWER-UPS ---
 # 0 = Bloqueado (no sale en el nivel). 1 = Nivel base. 2+ = Mejoras de duración/efecto.
 var niveles_powerups: Dictionary = {
 	"iman": 0,
 	"jetpack": 0,
 	"fantasma": 0,
-	"vida_extra": 0
+	"vida": 0
 }
 
 const RUTA_GUARDADO = "user://partida.save"

@@ -100,7 +100,7 @@ func intentar_compra(id_item: String) -> void:
 # --- SEÑALES DE LOS BOTONES ---
 
 func _on_boton_volver_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/MenuPrincipal.tscn")
+	get_tree().change_scene_to_file("res://Scenes/carrusel.tscn")
 
 func _on_comprar_iman_pressed() -> void:
 	intentar_compra("iman")

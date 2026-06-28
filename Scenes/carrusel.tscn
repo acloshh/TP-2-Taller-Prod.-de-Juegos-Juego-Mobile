@@ -1,26 +1,323 @@
 [gd_scene format=3 uid="uid://bqt6rox3b7j8u"]
 
-[ext_resource type="Texture2D" uid="uid://uwxq08g02ij6" path="res://Assets/botones/BTN_ShopNormal.png" id="1_2lyux"]
-[ext_resource type="Texture2D" uid="uid://dngl0wb0y4rpg" path="res://Assets/botones/BTN_ShopPressed.png" id="2_na37l"]
+[ext_resource type="Script" uid="uid://nwc1n5lbiosh" path="res://Scripts/carrusel.gd" id="1_h0r0o"]
+[ext_resource type="Texture2D" uid="uid://b0gse8yhsv2an" path="res://Assets_v02/Personaje001.png" id="1_l5tyw"]
+[ext_resource type="Texture2D" uid="uid://l6f7h26dh87c" path="res://Assets_v02/Personaje002.png" id="2_h0r0o"]
+[ext_resource type="Texture2D" uid="uid://og18ukju8kft" path="res://Assets_v02/Personaje003.png" id="3_s5ati"]
+[ext_resource type="FontFile" uid="uid://bokbas2o5sfs0" path="res://fonts/Porky Bold.otf" id="3_y4no7"]
+[ext_resource type="Texture2D" uid="uid://dq7c77lk5rkag" path="res://Assets_v02/BTN_ShopNormal.png" id="4_y4no7"]
+[ext_resource type="Texture2D" uid="uid://i1msc0jioayl" path="res://Assets_v02/BTN_ShopPressed.png" id="5_bjfqe"]
+[ext_resource type="Texture2D" uid="uid://dpnu3rv75asav" path="res://Assets_v02/BTN_GoNormal.png" id="6_b5ikh"]
+[ext_resource type="Texture2D" uid="uid://cubukcmb1542b" path="res://Assets_v02/BTN_GoPressed.png" id="7_8wflf"]
+[ext_resource type="Texture2D" uid="uid://dvlrncsn0pcvg" path="res://Assets_v02/flechas/flecha derecha.png" id="10_y4no7"]
 
-[node name="Control" type="Control" unique_id=1927026052]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5ati"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.07058824, 0.64705884, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="SeleccionSkins" type="Control" unique_id=1927026052]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1080.0
 offset_bottom = 2460.0
+script = ExtResource("1_h0r0o")
+metadata/_edit_horizontal_guides_ = [1195.0, 1222.0, 1420.0, 1437.0, 764.0]
+metadata/_edit_vertical_guides_ = [702.0, 757.0, 383.0, 328.0]
+
+[node name="Panel" type="Panel" parent="." unique_id=275111994]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.45800003
+anchor_right = 0.5
+anchor_bottom = 0.45800003
+offset_left = -159.5
+offset_top = -239.68005
+offset_right = 159.5
+offset_bottom = 238.31995
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s5ati")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=486061911]
-layout_mode = 0
-offset_right = 1080.0
-offset_bottom = 2460.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -459.0
+offset_right = 513.0
+offset_bottom = 342.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.39607844)
 
-[node name="BotonTienda" type="TextureButton" parent="." unique_id=1079470802]
+[node name="ContenedorCarrusel" type="HBoxContainer" parent="." unique_id=604873940]
 layout_mode = 0
-offset_left = 348.0
-offset_top = 1806.0
-offset_right = 476.0
-offset_bottom = 1870.0
-scale = Vector2(3, 3)
-texture_normal = ExtResource("1_2lyux")
-texture_pressed = ExtResource("2_na37l")
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="Base" type="Control" parent="ContenedorCarrusel" unique_id=654409278]
+custom_minimum_size = Vector2(1080, 2460)
+layout_mode = 2
+
+[node name="ImagenPersonaje" type="TextureRect" parent="ContenedorCarrusel/Base" unique_id=1805208420]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.99997
+offset_top = -263.99994
+offset_right = 64.0
+offset_bottom = -135.99976
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+pivot_offset = Vector2(64, 0)
+texture = ExtResource("1_l5tyw")
+
+[node name="NombrePersonaje" type="Label" parent="ContenedorCarrusel/Base" unique_id=1228456538]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.31800002
+anchor_right = 0.5
+anchor_bottom = 0.31800002
+offset_left = -150.5
+offset_top = -32.28003
+offset_right = 150.5
+offset_bottom = 33.71997
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y4no7")
+theme_override_font_sizes/font_size = 50
+text = "Explorador"
+
+[node name="Label2" type="Label" parent="ContenedorCarrusel/Base" unique_id=674291086]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.59400004
+anchor_right = 0.5
+anchor_bottom = 0.59400004
+offset_left = -245.5
+offset_top = -32.240112
+offset_right = 245.5
+offset_bottom = 33.759888
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y4no7")
+theme_override_font_sizes/font_size = 50
+text = "Personaje Default"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Turista" type="Control" parent="ContenedorCarrusel" unique_id=1890890225]
+custom_minimum_size = Vector2(1080, 2460)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ImagenPersonaje2" type="TextureRect" parent="ContenedorCarrusel/Turista" unique_id=404241969]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -263.99994
+offset_right = 64.0
+offset_bottom = -135.99976
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+pivot_offset = Vector2(64, 0)
+texture = ExtResource("2_h0r0o")
+
+[node name="NombrePersonaje2" type="Label" parent="ContenedorCarrusel/Turista" unique_id=262026245]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -473.0
+offset_right = 98.5
+offset_bottom = -407.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y4no7")
+theme_override_font_sizes/font_size = 50
+text = "Turista"
+
+[node name="Label3" type="Label" parent="ContenedorCarrusel/Turista" unique_id=1196766406]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.5
+offset_top = 181.5
+offset_right = 245.5
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y4no7")
+theme_override_font_sizes/font_size = 50
+text = "Caída mas lenta"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TigreNinja" type="Control" parent="ContenedorCarrusel" unique_id=203967933]
+custom_minimum_size = Vector2(1080, 2460)
+layout_mode = 2
+
+[node name="ImagenPersonaje3" type="TextureRect" parent="ContenedorCarrusel/TigreNinja" unique_id=44145658]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -263.99994
+offset_right = 64.0
+offset_bottom = -135.99976
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+pivot_offset = Vector2(64, 0)
+texture = ExtResource("3_s5ati")
+
+[node name="NombrePersonaje3" type="Label" parent="ContenedorCarrusel/TigreNinja" unique_id=1872883108]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -473.0
+offset_right = 143.5
+offset_bottom = -407.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y4no7")
+theme_override_font_sizes/font_size = 50
+text = "Tigre Ninja"
+
+[node name="Label4" type="Label" parent="ContenedorCarrusel/TigreNinja" unique_id=1825992561]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = 181.0
+offset_right = 317.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y4no7")
+theme_override_font_sizes/font_size = 50
+text = "Se pega en la pared
+y puede saltar otra vez"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonTienda" type="TextureButton" parent="." unique_id=1079470802]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.88000005
+anchor_right = 0.5
+anchor_bottom = 0.88000005
+offset_left = -192.0
+offset_top = -94.80005
+offset_right = 192.0
+offset_bottom = 97.19995
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_y4no7")
+texture_pressed = ExtResource("5_bjfqe")
+
+[node name="BotonJugar" type="TextureButton" parent="." unique_id=1531180507]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.76400006
+anchor_right = 0.5
+anchor_bottom = 0.76400006
+offset_left = -192.0
+offset_top = -95.440186
+offset_right = 192.0
+offset_bottom = 96.559814
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_b5ikh")
+texture_pressed = ExtResource("7_8wflf")
+
+[node name="Label" type="Label" parent="." unique_id=1279107660]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.11400001
+anchor_right = 0.5
+anchor_bottom = 0.11400001
+offset_left = -330.5
+offset_top = -64.44003
+offset_right = 330.5
+offset_bottom = 66.55997
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_y4no7")
+theme_override_font_sizes/font_size = 100
+text = "Elije tu skin!"
+
+[node name="FlechaDerecha" type="TextureRect" parent="." unique_id=1988820464]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.74100006
+anchor_top = 0.46600002
+anchor_right = 0.74100006
+anchor_bottom = 0.46600002
+offset_left = -44.28009
+offset_top = -44.360107
+offset_right = 83.71991
+offset_bottom = 83.63989
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_y4no7")
+
+[node name="FlechaDerecha2" type="TextureRect" parent="." unique_id=2111551617]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26200002
+anchor_top = 0.46600002
+anchor_right = 0.26200002
+anchor_bottom = 0.46600002
+offset_left = -44.95996
+offset_top = -44.360107
+offset_right = 83.04004
+offset_bottom = 83.63989
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_y4no7")
+flip_h = true
+
+[connection signal="pressed" from="BotonTienda" to="." method="_on_boton_tienda_pressed"]
+[connection signal="pressed" from="BotonJugar" to="." method="_on_boton_jugar_pressed"]

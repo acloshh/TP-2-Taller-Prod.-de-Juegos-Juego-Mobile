@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://do6w4veuwo0i3"]
 
 [ext_resource type="Script" uid="uid://d0b17x531v3hb" path="res://Scripts/tienda.gd" id="1_ar8g2"]
-[ext_resource type="Texture2D" uid="uid://bu2u24u315jr4" path="res://Assets/botones/BTN_BackNormal.png" id="2_2bbwx"]
 [ext_resource type="Texture2D" uid="uid://c2dw4bnsuwkna" path="res://Assets/moneda/monedaSpriteSheet.png" id="2_v1f1d"]
-[ext_resource type="Texture2D" uid="uid://cmxlauioe23na" path="res://Assets/botones/BTN_BackPressed.png" id="3_o5wvw"]
-[ext_resource type="Texture2D" uid="uid://qdbpc1jtfubg" path="res://Assets/iman/pngwing.com.png" id="5_n565k"]
-[ext_resource type="Texture2D" uid="uid://mcp6dkl4wopp" path="res://Assets/jetpack/pngwing.com (1).png" id="6_18aor"]
-[ext_resource type="Texture2D" uid="uid://wj3dclb4pae4" path="res://Assets/fantasma/fantasma.png" id="7_ykoqq"]
-[ext_resource type="Texture2D" uid="uid://b535agrpgpfrx" path="res://Assets/corazon con alas/pngwing.com.png" id="8_umihc"]
+[ext_resource type="Texture2D" uid="uid://wn2ea1ykamur" path="res://Assets_v02/BTN_BackNormal.png" id="3_v1f1d"]
+[ext_resource type="Texture2D" uid="uid://t4vxhhauwy4b" path="res://Assets_v02/BTN_BackPressed.png" id="4_n565k"]
+[ext_resource type="Texture2D" uid="uid://cagogbm18cdjj" path="res://Assets_v02/PowerupMagnet.png" id="5_v1f1d"]
+[ext_resource type="FontFile" uid="uid://bokbas2o5sfs0" path="res://fonts/Porky Bold.otf" id="6_18aor"]
+[ext_resource type="Texture2D" uid="uid://b1o3b3rixiy0q" path="res://Assets_v02/PowerupJetpack.png" id="6_n565k"]
+[ext_resource type="Texture2D" uid="uid://ci5vxjcfehhfb" path="res://Assets_v02/PowerupGhost.png" id="7_18aor"]
+[ext_resource type="Texture2D" uid="uid://io3ivaoinip5" path="res://Assets_v02/PowerupHeart.png" id="8_ykoqq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm5oc"]
 atlas = ExtResource("2_v1f1d")
@@ -45,9 +46,12 @@ metadata/_edit_vertical_guides_ = [540.0, 270.0, 810.0, 235.0, 440.0]
 metadata/_edit_horizontal_guides_ = [1230.0]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=241987216]
-layout_mode = 0
-offset_right = 1080.0
-offset_bottom = 2460.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.39607844)
 
 [node name="EtiquetaMonedasTienda" type="AnimatedSprite2D" parent="." unique_id=2108477241]
@@ -57,10 +61,11 @@ sprite_frames = SubResource("SpriteFrames_0pkbd")
 [node name="Monedas" type="Label" parent="." unique_id=1726538211]
 layout_mode = 0
 offset_left = 478.0
-offset_top = 425.0
+offset_top = 427.0
 offset_right = 518.0
-offset_bottom = 513.0
+offset_bottom = 515.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 64
 
 [node name="BotonVolver" type="TextureButton" parent="." unique_id=1177706887]
@@ -69,9 +74,8 @@ offset_left = 348.0
 offset_top = 1890.0
 offset_right = 476.0
 offset_bottom = 1954.0
-scale = Vector2(3, 3)
-texture_normal = ExtResource("2_2bbwx")
-texture_pressed = ExtResource("3_o5wvw")
+texture_normal = ExtResource("3_v1f1d")
+texture_pressed = ExtResource("4_n565k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=199910773]
 layout_mode = 1
@@ -79,9 +83,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 45.500004
+offset_left = 24.500004
 offset_top = -274.99994
-offset_right = -688.5
+offset_right = -683.5
 offset_bottom = 159.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -95,7 +99,7 @@ layout_mode = 2
 [node name="NombreIman" type="TextureRect" parent="VBoxContainer/FilaIman" unique_id=1575517564]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("5_n565k")
+texture = ExtResource("5_v1f1d")
 expand_mode = 1
 
 [node name="CajaInfo" type="VBoxContainer" parent="VBoxContainer/FilaIman" unique_id=583964080]
@@ -104,8 +108,9 @@ size_flags_horizontal = 0
 theme_override_constants/separation = 4
 
 [node name="NivelIman" type="Label" parent="VBoxContainer/FilaIman/CajaInfo" unique_id=1544495077]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Nivel: 5 (MAX)"
 horizontal_alignment = 1
@@ -114,6 +119,7 @@ text_overrun_behavior = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/FilaIman/CajaInfo" unique_id=1514905782]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Costo: 100"
 horizontal_alignment = 1
@@ -121,8 +127,10 @@ vertical_alignment = 1
 
 [node name="ComprarIman" type="Button" parent="VBoxContainer/FilaIman/CajaInfo" unique_id=714393819]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Comprar"
+expand_icon = true
 
 [node name="FilaJetpack" type="HBoxContainer" parent="VBoxContainer" unique_id=1221977886]
 layout_mode = 2
@@ -130,7 +138,7 @@ layout_mode = 2
 [node name="NombreJetpack" type="TextureRect" parent="VBoxContainer/FilaJetpack" unique_id=321666936]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("6_18aor")
+texture = ExtResource("6_n565k")
 expand_mode = 1
 
 [node name="CajaInfo" type="VBoxContainer" parent="VBoxContainer/FilaJetpack" unique_id=1572161413]
@@ -138,8 +146,9 @@ layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="NivelJetpack" type="Label" parent="VBoxContainer/FilaJetpack/CajaInfo" unique_id=1628120985]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Nivel: 5 (MAX)"
 horizontal_alignment = 1
@@ -148,6 +157,7 @@ text_overrun_behavior = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/FilaJetpack/CajaInfo" unique_id=1583137127]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Costo: 150"
 horizontal_alignment = 1
@@ -155,6 +165,7 @@ vertical_alignment = 1
 
 [node name="ComprarJetpack" type="Button" parent="VBoxContainer/FilaJetpack/CajaInfo" unique_id=851305647]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Comprar"
 
@@ -164,9 +175,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 585.50006
+offset_left = 548.5
 offset_top = -274.99994
-offset_right = -148.49994
+offset_right = -159.5
 offset_bottom = 159.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -179,7 +190,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer2/FilaFantasma" unique_id=1071608060]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("7_ykoqq")
+texture = ExtResource("7_18aor")
 expand_mode = 1
 
 [node name="CajaInfo" type="VBoxContainer" parent="VBoxContainer2/FilaFantasma" unique_id=1519256249]
@@ -187,8 +198,9 @@ layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="NivelFantasma" type="Label" parent="VBoxContainer2/FilaFantasma/CajaInfo" unique_id=1929084968]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Nivel: 5 (MAX)"
 horizontal_alignment = 1
@@ -197,6 +209,7 @@ text_overrun_behavior = 1
 
 [node name="Label" type="Label" parent="VBoxContainer2/FilaFantasma/CajaInfo" unique_id=1689272296]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Costo: 120"
 horizontal_alignment = 1
@@ -204,6 +217,7 @@ vertical_alignment = 1
 
 [node name="ComprarFantasma" type="Button" parent="VBoxContainer2/FilaFantasma/CajaInfo" unique_id=114877443]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Comprar"
 
@@ -213,7 +227,7 @@ layout_mode = 2
 [node name="NombreVida" type="TextureRect" parent="VBoxContainer2/FilaVida" unique_id=451139725]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture = ExtResource("8_umihc")
+texture = ExtResource("8_ykoqq")
 expand_mode = 1
 stretch_mode = 5
 
@@ -222,8 +236,9 @@ layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="NivelVida" type="Label" parent="VBoxContainer2/FilaVida/CajaInfo" unique_id=963994275]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Nivel: 5 (MAX)"
 horizontal_alignment = 1
@@ -232,6 +247,7 @@ text_overrun_behavior = 1
 
 [node name="Label" type="Label" parent="VBoxContainer2/FilaVida/CajaInfo" unique_id=1835606461]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Costo: 350"
 horizontal_alignment = 1
@@ -239,6 +255,7 @@ vertical_alignment = 1
 
 [node name="ComprarVida" type="Button" parent="VBoxContainer2/FilaVida/CajaInfo" unique_id=1744453312]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_18aor")
 theme_override_font_sizes/font_size = 30
 text = "Comprar"
 

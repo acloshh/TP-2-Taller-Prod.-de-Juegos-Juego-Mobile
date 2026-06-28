@@ -5,19 +5,156 @@
 [ext_resource type="PackedScene" uid="uid://dp2w6thvjeqfo" path="res://Scenes/plataforma.tscn" id="2_glouy"]
 [ext_resource type="PackedScene" uid="uid://dwhimlg017shj" path="res://Scenes/plataforma_piedra.tscn" id="3_has1v"]
 [ext_resource type="PackedScene" uid="uid://u1wr1q0wy4ti" path="res://Scenes/moneda.tscn" id="3_i8avv"]
-[ext_resource type="Texture2D" uid="uid://df4rq67wxaw8j" path="res://Assets/sprite personaje/Personaje001.png" id="5_7j6if"]
 [ext_resource type="PackedScene" uid="uid://cqjhrq4wg45lo" path="res://Scenes/item_iman.tscn" id="5_m1vgi"]
 [ext_resource type="Script" uid="uid://cq3nqowntbthj" path="res://Scripts/camera_2d.gd" id="5_yf8a8"]
 [ext_resource type="PackedScene" uid="uid://dlg4oungl00t7" path="res://Scenes/item_jetpack.tscn" id="6_1bodn"]
 [ext_resource type="Script" uid="uid://bhx4g7jdilr4j" path="res://Scripts/pantalla_game_over.gd" id="6_qxsm7"]
 [ext_resource type="PackedScene" uid="uid://b3eiyy7qtsaxa" path="res://Scenes/item_fantasma.tscn" id="7_ppd06"]
-[ext_resource type="Texture2D" uid="uid://bwvbk3j2spyy4" path="res://Assets/botones/BTN_MenuNormal.png" id="8_7j6if"]
-[ext_resource type="Texture2D" uid="uid://d34ai0ayyokw4" path="res://Assets/botones/BTN_MenuPressed.png" id="9_has1v"]
-[ext_resource type="Texture2D" uid="uid://b535agrpgpfrx" path="res://Assets/corazon con alas/pngwing.com.png" id="13_amofe"]
+[ext_resource type="Texture2D" uid="uid://cy81tyitp408b" path="res://Assets_v02/Personaje001_SpriteSheet.png" id="9_ppd06"]
+[ext_resource type="Texture2D" uid="uid://71ncfpbxaof1" path="res://Assets_v02/BTN_RetryNormal.png" id="13_rr27p"]
+[ext_resource type="Texture2D" uid="uid://fy0nyjuuedl6" path="res://Assets_v02/BTN_MenuNormal.png" id="13_w4e5f"]
+[ext_resource type="Texture2D" uid="uid://d0gsrvlrjx6ho" path="res://Assets_v02/BTN_RetryPressed.png" id="14_f3x5k"]
+[ext_resource type="Texture2D" uid="uid://cwefybadd8uj1" path="res://Assets_v02/BTN_MenuPressed.png" id="14_hppdt"]
 [ext_resource type="Texture2D" uid="uid://c2dw4bnsuwkna" path="res://Assets/moneda/monedaSpriteSheet.png" id="14_ppd06"]
+[ext_resource type="Texture2D" uid="uid://io3ivaoinip5" path="res://Assets_v02/PowerupHeart.png" id="14_w4e5f"]
+[ext_resource type="Texture2D" uid="uid://b5bijqmu5m4qq" path="res://Assets_v02/AnimacionAgua1080-Sheet.png" id="16_w4e5f"]
+[ext_resource type="FontFile" uid="uid://bokbas2o5sfs0" path="res://fonts/Porky Bold.otf" id="17_f3x5k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnw35"]
+atlas = ExtResource("16_w4e5f")
+region = Rect2(4320, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmfx7"]
+atlas = ExtResource("16_w4e5f")
+region = Rect2(0, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcf1m"]
+atlas = ExtResource("16_w4e5f")
+region = Rect2(1080, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84eq0"]
+atlas = ExtResource("16_w4e5f")
+region = Rect2(2160, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e4tf"]
+atlas = ExtResource("16_w4e5f")
+region = Rect2(3240, 0, 1080, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjmrn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnw35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmfx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcf1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84eq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e4tf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hppdt"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr27p"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3x5k"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d67sf"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btko3"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27nup"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6gbd"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjmrn"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8igm"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmh1f"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su8pv"]
+atlas = ExtResource("9_ppd06")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hnw35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hppdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr27p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3x5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d67sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btko3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27nup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6gbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjmrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8igm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmh1f")
+}],
+"loop": true,
+"name": &"caida salto",
+"speed": 40.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su8pv")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 1.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glouy"]
-size = Vector2(135, 152)
+size = Vector2(130, 152)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_has1v"]
 
@@ -58,18 +195,41 @@ icono_vida_extra = NodePath("CanvasLayer/IconoVidaExtra")
 metadata/_edit_vertical_guides_ = [540.0]
 metadata/_edit_horizontal_guides_ = [54.0, 123.0]
 
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=565902446]
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(-9, -876)
+repeat_size = Vector2(0, 1050)
+repeat_times = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Parallax2D" unique_id=1732705225]
+position = Vector2(-242.18184, 876.0607)
+scale = Vector2(1.0001684, 1)
+sprite_frames = SubResource("SpriteFrames_fjmrn")
+autoplay = "default"
+centered = false
+flip_h = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Parallax2D" unique_id=792523546]
+position = Vector2(835.8181, 876.0607)
+scale = Vector2(1.0001684, 1)
+sprite_frames = SubResource("SpriteFrames_fjmrn")
+autoplay = "default"
+centered = false
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=665427662]
 position = Vector2(540, 2393)
 script = ExtResource("1_uqtxj")
 suavizado = 0.1
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1565043464]
-position = Vector2(0, -10)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("5_7j6if")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=365786658]
+position = Vector2(0, -7.899994)
+scale = Vector2(1.2, 1.1859375)
+sprite_frames = SubResource("SpriteFrames_hnw35")
+animation = &"caida salto"
+frame_progress = 0.75082046
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1724074318]
-position = Vector2(2.5, -9)
+position = Vector2(3, -9)
 shape = SubResource("RectangleShape2D_glouy")
 
 [node name="AreaIman" type="Area2D" parent="CharacterBody2D" unique_id=537220027]
@@ -128,22 +288,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.6117647)
 
-[node name="Button" type="Button" parent="CanvasLayer/PantallaGameOver/ColorRect" unique_id=93588496]
+[node name="Button" type="TextureButton" parent="CanvasLayer/PantallaGameOver/ColorRect" unique_id=436611815]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -124.5
-offset_top = 521.5
-offset_right = 124.5
-offset_bottom = 598.5
+offset_left = -190.0
+offset_top = 441.5
+offset_right = 194.0
+offset_bottom = 633.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-text = "REINICIAR"
-flat = true
+texture_normal = ExtResource("13_rr27p")
+texture_pressed = ExtResource("14_f3x5k")
 
 [node name="BotonMenu" type="TextureButton" parent="CanvasLayer/PantallaGameOver/ColorRect" unique_id=834405972]
 layout_mode = 1
@@ -152,15 +311,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -191.5
-offset_top = 792.0
-offset_right = -63.5
-offset_bottom = 856.0
+offset_left = -190.5
+offset_top = 728.0
+offset_right = 193.5
+offset_bottom = 920.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3, 3)
-texture_normal = ExtResource("8_7j6if")
-texture_pressed = ExtResource("9_has1v")
+texture_normal = ExtResource("13_w4e5f")
+texture_pressed = ExtResource("14_hppdt")
 
 [node name="Label" type="Label" parent="CanvasLayer/PantallaGameOver/ColorRect" unique_id=1951535504]
 layout_mode = 1
@@ -172,8 +330,9 @@ offset_top = -554.5
 offset_bottom = -485.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_f3x5k")
 theme_override_font_sizes/font_size = 64
-text = "¡GAME OVER!"
+text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -187,6 +346,7 @@ offset_top = 140.0
 offset_bottom = 228.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_f3x5k")
 theme_override_font_sizes/font_size = 64
 text = "HIGH SCORE: "
 horizontal_alignment = 1
@@ -201,6 +361,7 @@ offset_top = -262.0
 offset_bottom = -174.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_f3x5k")
 theme_override_font_sizes/font_size = 64
 text = "PUNTAJE: "
 horizontal_alignment = 1
@@ -211,28 +372,33 @@ anchor_right = 1.0
 offset_top = 120.0
 offset_bottom = 208.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_f3x5k")
 theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="MarcadorMonedas" type="Label" parent="CanvasLayer" unique_id=532463788]
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 126.0
-offset_top = 46.0
+offset_top = 45.0
 offset_right = 126.0
-offset_bottom = 134.0
+offset_bottom = 133.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("17_f3x5k")
 theme_override_font_sizes/font_size = 64
+metadata/_edit_use_anchors_ = true
 
 [node name="IconoVidaExtra" type="TextureRect" parent="CanvasLayer" unique_id=1313254548]
 offset_left = 915.0
-offset_top = 45.0
-offset_right = 1037.0
-offset_bottom = 132.0
-texture = ExtResource("13_amofe")
-expand_mode = 1
+offset_top = 25.0
+offset_right = 1043.0
+offset_bottom = 153.0
+texture = ExtResource("14_w4e5f")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1819344376]
 position = Vector2(88, 88)
@@ -242,5 +408,6 @@ sprite_frames = SubResource("SpriteFrames_hppdt")
 [connection signal="timeout" from="CharacterBody2D/TemporizadorIman" to="CharacterBody2D" method="_on_temporizador_iman_timeout"]
 [connection signal="timeout" from="CharacterBody2D/TemporizadorJetpack" to="." method="_on_temporizador_jetpack_timeout"]
 [connection signal="timeout" from="CharacterBody2D/TemporizadorJetpack" to="CharacterBody2D" method="_on_temporizador_jetpack_timeout"]
+[connection signal="timeout" from="CharacterBody2D/TemporizadorFantasma" to="CharacterBody2D" method="_on_temporizador_fantasma_timeout"]
 [connection signal="pressed" from="CanvasLayer/PantallaGameOver/ColorRect/Button" to="CanvasLayer/PantallaGameOver" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PantallaGameOver/ColorRect/BotonMenu" to="CanvasLayer/PantallaGameOver" method="_on_boton_volver_pressed"]
