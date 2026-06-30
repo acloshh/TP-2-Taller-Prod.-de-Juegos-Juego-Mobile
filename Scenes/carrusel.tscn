@@ -3,13 +3,18 @@
 [ext_resource type="Script" uid="uid://nwc1n5lbiosh" path="res://Scripts/carrusel.gd" id="1_h0r0o"]
 [ext_resource type="Texture2D" uid="uid://b0gse8yhsv2an" path="res://Assets_v02/Personaje001.png" id="1_l5tyw"]
 [ext_resource type="Texture2D" uid="uid://l6f7h26dh87c" path="res://Assets_v02/Personaje002.png" id="2_h0r0o"]
+[ext_resource type="Texture2D" uid="uid://w2d5lxnrbvhl" path="res://Assets_v02/Question.png" id="3_b5ikh"]
 [ext_resource type="Texture2D" uid="uid://og18ukju8kft" path="res://Assets_v02/Personaje003.png" id="3_s5ati"]
 [ext_resource type="FontFile" uid="uid://bokbas2o5sfs0" path="res://fonts/Porky Bold.otf" id="3_y4no7"]
 [ext_resource type="Texture2D" uid="uid://dq7c77lk5rkag" path="res://Assets_v02/BTN_ShopNormal.png" id="4_y4no7"]
 [ext_resource type="Texture2D" uid="uid://i1msc0jioayl" path="res://Assets_v02/BTN_ShopPressed.png" id="5_bjfqe"]
 [ext_resource type="Texture2D" uid="uid://dpnu3rv75asav" path="res://Assets_v02/BTN_GoNormal.png" id="6_b5ikh"]
+[ext_resource type="Texture2D" uid="uid://bgqcafy30ffx" path="res://Assets_v02/Personaje004.png" id="6_bjfqe"]
 [ext_resource type="Texture2D" uid="uid://cubukcmb1542b" path="res://Assets_v02/BTN_GoPressed.png" id="7_8wflf"]
 [ext_resource type="Texture2D" uid="uid://dvlrncsn0pcvg" path="res://Assets_v02/flechas/flecha derecha.png" id="10_y4no7"]
+[ext_resource type="Texture2D" uid="uid://d2efdd7c71g7b" path="res://Assets_v02/BTN_ComprarNormal.png" id="12_4y76f"]
+[ext_resource type="Texture2D" uid="uid://3ff8gn6lk1v5" path="res://Assets_v02/BTN_ComprarPressed.png" id="13_xhvnt"]
+[ext_resource type="Texture2D" uid="uid://bd6fxsteix4wy" path="res://Assets/gema/Gema.png" id="15_xhvnt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5ati"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -29,7 +34,7 @@ anchors_preset = 0
 offset_right = 1080.0
 offset_bottom = 2460.0
 script = ExtResource("1_h0r0o")
-metadata/_edit_horizontal_guides_ = [1195.0, 1222.0, 1420.0, 1437.0, 764.0]
+metadata/_edit_horizontal_guides_ = [1195.0, 1222.0, 1420.0, 1437.0, 764.0, 968.0]
 metadata/_edit_vertical_guides_ = [702.0, 757.0, 383.0, 328.0]
 
 [node name="Panel" type="Panel" parent="." unique_id=275111994]
@@ -86,6 +91,23 @@ scale = Vector2(2.5, 2.5)
 pivot_offset = Vector2(64, 0)
 texture = ExtResource("1_l5tyw")
 
+[node name="IconoPregunta" type="TextureRect" parent="ContenedorCarrusel/Base" unique_id=1588557733]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.99997
+offset_top = -263.99994
+offset_right = 64.0
+offset_bottom = -135.99976
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+pivot_offset = Vector2(64, 0)
+texture = ExtResource("3_b5ikh")
+
 [node name="NombrePersonaje" type="Label" parent="ContenedorCarrusel/Base" unique_id=1228456538]
 layout_mode = 1
 anchors_preset = -1
@@ -102,6 +124,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_y4no7")
 theme_override_font_sizes/font_size = 50
 text = "Explorador"
+horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="ContenedorCarrusel/Base" unique_id=674291086]
 layout_mode = 1
@@ -127,7 +150,7 @@ custom_minimum_size = Vector2(1080, 2460)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ImagenPersonaje2" type="TextureRect" parent="ContenedorCarrusel/Turista" unique_id=404241969]
+[node name="ImagenPersonaje" type="TextureRect" parent="ContenedorCarrusel/Turista" unique_id=404241969]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -144,7 +167,24 @@ scale = Vector2(2.5, 2.5)
 pivot_offset = Vector2(64, 0)
 texture = ExtResource("2_h0r0o")
 
-[node name="NombrePersonaje2" type="Label" parent="ContenedorCarrusel/Turista" unique_id=262026245]
+[node name="IconoPregunta" type="TextureRect" parent="ContenedorCarrusel/Turista" unique_id=1846632900]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -263.99994
+offset_right = 64.0
+offset_bottom = -135.99976
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(64, 0)
+texture = ExtResource("3_b5ikh")
+
+[node name="NombrePersonaje" type="Label" parent="ContenedorCarrusel/Turista" unique_id=262026245]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -160,6 +200,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_y4no7")
 theme_override_font_sizes/font_size = 50
 text = "Turista"
+horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="ContenedorCarrusel/Turista" unique_id=1196766406]
 layout_mode = 1
@@ -184,7 +225,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(1080, 2460)
 layout_mode = 2
 
-[node name="ImagenPersonaje3" type="TextureRect" parent="ContenedorCarrusel/TigreNinja" unique_id=44145658]
+[node name="ImagenPersonaje" type="TextureRect" parent="ContenedorCarrusel/TigreNinja" unique_id=44145658]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -201,7 +242,24 @@ scale = Vector2(2.5, 2.5)
 pivot_offset = Vector2(64, 0)
 texture = ExtResource("3_s5ati")
 
-[node name="NombrePersonaje3" type="Label" parent="ContenedorCarrusel/TigreNinja" unique_id=1872883108]
+[node name="IconoPregunta" type="TextureRect" parent="ContenedorCarrusel/TigreNinja" unique_id=1352165054]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -263.99994
+offset_right = 64.0
+offset_bottom = -135.99976
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(64, 0)
+texture = ExtResource("3_b5ikh")
+
+[node name="NombrePersonaje" type="Label" parent="ContenedorCarrusel/TigreNinja" unique_id=1872883108]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -217,6 +275,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_y4no7")
 theme_override_font_sizes/font_size = 50
 text = "Tigre Ninja"
+horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="ContenedorCarrusel/TigreNinja" unique_id=1825992561]
 layout_mode = 1
@@ -235,6 +294,82 @@ theme_override_fonts/font = ExtResource("3_y4no7")
 theme_override_font_sizes/font_size = 50
 text = "Se pega en la pared
 y puede saltar otra vez"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Saltador" type="Control" parent="ContenedorCarrusel" unique_id=1150285702]
+custom_minimum_size = Vector2(1080, 2460)
+layout_mode = 2
+
+[node name="ImagenPersonaje" type="TextureRect" parent="ContenedorCarrusel/Saltador" unique_id=716652398]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -263.99994
+offset_right = 64.0
+offset_bottom = -135.99976
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+pivot_offset = Vector2(64, 0)
+texture = ExtResource("6_bjfqe")
+
+[node name="IconoPregunta" type="TextureRect" parent="ContenedorCarrusel/Saltador" unique_id=1202709782]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -263.99994
+offset_right = 64.0
+offset_bottom = -135.99976
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(64, 0)
+texture = ExtResource("3_b5ikh")
+
+[node name="NombrePersonaje" type="Label" parent="ContenedorCarrusel/Saltador" unique_id=1856513900]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -473.0
+offset_right = 143.5
+offset_bottom = -407.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y4no7")
+theme_override_font_sizes/font_size = 50
+text = "Saltador"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ContenedorCarrusel/Saltador" unique_id=56504434]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = 181.0
+offset_right = 317.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y4no7")
+theme_override_font_sizes/font_size = 50
+text = "Salta mucho mas
+alto"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -270,21 +405,37 @@ grow_vertical = 2
 texture_normal = ExtResource("6_b5ikh")
 texture_pressed = ExtResource("7_8wflf")
 
+[node name="BotonDesbloquear" type="TextureButton" parent="." unique_id=1896637894]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.76400006
+anchor_right = 0.5
+anchor_bottom = 0.76400006
+offset_left = -192.0
+offset_top = -95.440186
+offset_right = 192.0
+offset_bottom = 96.559814
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("12_4y76f")
+texture_pressed = ExtResource("13_xhvnt")
+
 [node name="Label" type="Label" parent="." unique_id=1279107660]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.11400001
+anchor_top = 0.149
 anchor_right = 0.5
-anchor_bottom = 0.11400001
-offset_left = -330.5
-offset_top = -64.44003
-offset_right = 330.5
-offset_bottom = 66.55997
+anchor_bottom = 0.149
+offset_left = -339.0
+offset_top = -64.54001
+offset_right = 339.0
+offset_bottom = 66.45999
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_y4no7")
 theme_override_font_sizes/font_size = 100
-text = "Elije tu skin!"
+text = "Elige tu skin!"
 
 [node name="FlechaDerecha" type="TextureRect" parent="." unique_id=1988820464]
 layout_mode = 1
@@ -319,5 +470,27 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("10_y4no7")
 flip_h = true
 
+[node name="ContenedorGemas" type="HBoxContainer" parent="." unique_id=1072367358]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -261.0
+offset_top = 26.0
+offset_right = -128.0
+offset_bottom = 154.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="ContenedorGemas" unique_id=121530233]
+layout_mode = 2
+texture = ExtResource("15_xhvnt")
+
+[node name="EtiquetaGemas" type="Label" parent="ContenedorGemas" unique_id=1779730606]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_y4no7")
+theme_override_font_sizes/font_size = 64
+
 [connection signal="pressed" from="BotonTienda" to="." method="_on_boton_tienda_pressed"]
 [connection signal="pressed" from="BotonJugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="BotonDesbloquear" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="BotonDesbloquear" to="." method="_on_boton_desbloquear_pressed"]

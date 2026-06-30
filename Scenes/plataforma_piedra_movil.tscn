@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dca5nx8g3r5q2"]
+
+[ext_resource type="Script" uid="uid://bnxu06xgolqck" path="res://Scripts/plataforma_movil.gd" id="1_gdjka"]
+[ext_resource type="Texture2D" uid="uid://bocth8sq3xkxr" path="res://Assets/PlataformaPiedraChica.png" id="2_go6cd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_re71i"]
+size = Vector2(239, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pocu"]
+size = Vector2(256, 64)
+
+[node name="PlataformaPiedraMovil" type="AnimatableBody2D" unique_id=1479023805]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_gdjka")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1375071380]
+texture = ExtResource("2_go6cd")
+offset = Vector2(0, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1524261261]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_re71i")
+
+[node name="CuerpoFantasma" type="StaticBody2D" parent="." unique_id=773682516]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CuerpoFantasma" unique_id=1892916371]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_8pocu")
+one_way_collision = true

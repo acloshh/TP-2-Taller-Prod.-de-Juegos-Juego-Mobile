@@ -1,7 +1,14 @@
 extends Node2D
 
-@export var plataforma_escena: PackedScene
+@export var escena_madera: PackedScene
+@export var escena_madera_movil: PackedScene
 @export var escena_plataforma_piedra: PackedScene
+@export var escena_piedra_movil: PackedScene
+@export var escena_pinchos: PackedScene
+
+@export var popup_logro: Control
+@export var etiqueta_mensaje_logro: Label
+
 @export var jugador: CharacterBody2D
 @export var camara: Camera2D
 @export var ui_game_over: Control
@@ -13,13 +20,11 @@ extends Node2D
 @export var escena_item_jetpack: PackedScene
 @export var escena_item_fantasma: PackedScene
 
-# --- NUEVA VARIABLE PARA EL ÍCONO ---
 @export var icono_vida_extra: TextureRect
 
 @export var cantidad_inicial: int = 15
 @export var distancia_y: float = 420
 @export var margen_x: float = 150.0
-
 @export var velocidad_seguimiento_camara: float = 8.0 
 
 var altura_actual: float = 0.0
@@ -27,32 +32,27 @@ var puntos: int = 0
 var plataformas_generadas: int = 0
 
 func _ready() -> void:
-	if etiqueta_monedas != null:
-		etiqueta_monedas.text = str(DatosGlobales.total_monedas)
-		
-	# --- LÓGICA VISUAL DEL CORAZÓN ---
-	# Si conectamos el ícono, chequeamos si el power-up está comprado
+	# Inicialización visual básica
+	if etiqueta_monedas != null: etiqueta_monedas.text = str(DatosGlobales.total_monedas)
+	
 	if icono_vida_extra != null:
-		if DatosGlobales.niveles_powerups.has("vida") and DatosGlobales.niveles_powerups["vida"] > 0:
-			icono_vida_extra.visible = true
-			# Modulate a blanco puro y 100% de opacidad (estado normal)
-			icono_vida_extra.modulate = Color(1, 1, 1, 1)
-		else:
-			# Si no lo tiene comprado, ni siquiera lo mostramos
-			icono_vida_extra.visible = false
-		
-	if plataforma_escena == null or jugador == null:
-		return
+		icono_vida_extra.visible = (DatosGlobales.niveles_powerups.has("vida") and DatosGlobales.niveles_powerups["vida"] > 0)
+		icono_vida_extra.modulate = Color(1, 1, 1, 1)
+
+	if escena_madera == null or jugador == null: return
+	
+	# Conexión segura de la señal
+	jugador.vida_extra_usada.connect(_on_jugador_vida_extra_usada)
 		
 	altura_actual = jugador.global_position.y - distancia_y
 	
-	var primera_plataforma = plataforma_escena.instantiate()
+	var primera_plataforma = escena_madera.instantiate()
 	primera_plataforma.global_position = Vector2(jugador.global_position.x, altura_actual)
-	primera_plataforma.plataforma_superada.connect(sumar_punto)
+	if primera_plataforma.has_signal("plataforma_superada"):
+		primera_plataforma.plataforma_superada.connect(sumar_punto)
 	add_child(primera_plataforma)
 	
 	altura_actual -= distancia_y
-	
 	for i in range(cantidad_inicial - 1):
 		generar_plataforma()
 
@@ -67,89 +67,97 @@ func _process(delta: float) -> void:
 			
 		if ui_game_over != null:
 			var limite_inferior = camara.global_position.y + (get_viewport_rect().size.y / 2.0) + 100.0
-			
 			if jugador.global_position.y > limite_inferior:
 				if jugador.vidas_extras > 0:
 					jugador.vidas_extras -= 1
-					
 					jugador.global_position.y = limite_inferior - 50.0
 					jugador.velocity.y = jugador.fuerza_rebote * 1.5
-					
-					# --- APAGAMOS EL ÍCONO ---
-					# Lo volvemos gris y le bajamos la transparencia (Canal Alfa) al 50%
-					if icono_vida_extra != null:
-						icono_vida_extra.modulate = Color(0.4, 0.4, 0.4, 0.5)
-					
-					print("¡Salvado por el power-up pasivo! Vidas restantes esta run: ", jugador.vidas_extras)
+					_on_jugador_vida_extra_usada()
 				else:
 					activar_game_over()
 
 func generar_plataforma() -> void:
 	plataformas_generadas += 1
-	var nueva_plataforma: Node2D
-	
-	if plataformas_generadas >= 75 and escena_plataforma_piedra != null and randf() < 0.25:
-		nueva_plataforma = escena_plataforma_piedra.instantiate()
-	else:
-		nueva_plataforma = plataforma_escena.instantiate()
+	var escena_elegida = elegir_plataforma_aleatoria(puntos)
+	var nueva_plataforma = escena_elegida.instantiate()
 		
 	var ancho_pantalla = get_viewport_rect().size.x
 	var x_aleatorio = randf_range(margen_x, ancho_pantalla - margen_x)
 	altura_actual -= distancia_y
 	nueva_plataforma.global_position = Vector2(x_aleatorio, altura_actual)
 	
+	if randf() < calcular_probabilidad_pinchos(puntos) and escena_pinchos != null:
+		var pinchos = escena_pinchos.instantiate()
+		pinchos.position = Vector2(0, -39)
+		nueva_plataforma.add_child(pinchos)
+	
 	if nueva_plataforma.has_signal("plataforma_superada"):
 		nueva_plataforma.plataforma_superada.connect(sumar_punto)
 	
-	var nivel_iman = DatosGlobales.niveles_powerups["iman"]
-	var nivel_jetpack = DatosGlobales.niveles_powerups["jetpack"]
-	var nivel_fantasma = DatosGlobales.niveles_powerups["fantasma"]
-	var dado = randf() 
-	
-	if dado < 0.02 and escena_item_iman != null and nivel_iman > 0:
-		var nuevo_iman = escena_item_iman.instantiate()
-		nuevo_iman.position = Vector2(0, -50.0)
-		nueva_plataforma.add_child(nuevo_iman)
-		
-	elif dado >= 0.02 and dado < 0.04 and escena_item_jetpack != null and nivel_jetpack > 0:
-		var nuevo_jetpack = escena_item_jetpack.instantiate()
-		nuevo_jetpack.position = Vector2(0, -50.0)
-		nueva_plataforma.add_child(nuevo_jetpack)
-		
-	elif dado >= 0.04 and dado < 0.06 and escena_item_fantasma != null and nivel_fantasma > 0:
-		var nuevo_fantasma = escena_item_fantasma.instantiate()
-		nuevo_fantasma.position = Vector2(0, -50.0)
-		nueva_plataforma.add_child(nuevo_fantasma)
-		
-	elif dado >= 0.06 and dado < 0.56 and moneda_escena != null:
-		var nueva_moneda = moneda_escena.instantiate()
-		nueva_moneda.moneda_recogida.connect(sumar_moneda)
-		nueva_moneda.position = Vector2(0, -40.0)
-		nueva_plataforma.add_child(nueva_moneda)
-	
 	add_child(nueva_plataforma)
 
-func sumar_point() -> void:
-	pass
+func elegir_plataforma_aleatoria(puntos_actuales: int) -> PackedScene:
+	var prob = randf()
+	if puntos_actuales < 50: return escena_madera
+	if puntos_actuales < 120: return escena_madera if prob < 0.7 else escena_madera_movil
+	if puntos_actuales < 250:
+		if prob < 0.4: return escena_madera
+		if prob < 0.7: return escena_madera_movil
+		if prob < 0.9: return escena_plataforma_piedra
+		return escena_piedra_movil
+	return escena_piedra_movil
+
+func calcular_probabilidad_pinchos(puntos_actuales: int) -> float:
+	if puntos_actuales < 75: return 0.0
+	if puntos_actuales < 120: return 0.1
+	if puntos_actuales < 250: return 0.25
+	return 0.35
 
 func sumar_punto() -> void:
 	puntos += 1
-	if etiqueta_puntos != null:
-		etiqueta_puntos.text = str(puntos)
+	if etiqueta_puntos != null: etiqueta_puntos.text = str(puntos)
 
 func sumar_moneda() -> void:
 	DatosGlobales.total_monedas += 1
-	if etiqueta_monedas != null:
-		etiqueta_monedas.text = str(DatosGlobales.total_monedas)
+	if etiqueta_monedas != null: etiqueta_monedas.text = str(DatosGlobales.total_monedas)
+
+func verificar_logros(puntos_finales: int) -> int:
+	var ganadas: int = 0
+	if puntos_finales >= 50 and not 50 in DatosGlobales.logros_reclamados:
+		DatosGlobales.logros_reclamados.append(50); ganadas += 50
+	if puntos_finales >= 150 and not 150 in DatosGlobales.logros_reclamados:
+		DatosGlobales.logros_reclamados.append(150); ganadas += 100
+	if ganadas > 0: DatosGlobales.total_gemas += ganadas
+	return ganadas
 
 func activar_game_over() -> void:
-	if puntos > DatosGlobales.mejor_puntaje:
-		DatosGlobales.mejor_puntaje = puntos
-	
+	if puntos > DatosGlobales.mejor_puntaje: DatosGlobales.mejor_puntaje = puntos
+	var gemas = verificar_logros(puntos)
 	DatosGlobales.guardar_datos()
 	
+	if gemas > 0 and popup_logro != null:
+		etiqueta_mensaje_logro.text = "¡LOGRO DESBLOQUEADO!\nGanaste " + str(gemas) + " Gemas"
+		
+		# Ajuste de visibilidad forzada
+		popup_logro.visible = true 
+		
+		# Pausamos el mundo
+		get_tree().paused = true 
+	else:
+		mostrar_pantalla_game_over()
+
+func mostrar_pantalla_game_over() -> void:
 	if ui_game_over.has_method("mostrar_resultados"):
 		ui_game_over.mostrar_resultados(puntos, DatosGlobales.mejor_puntaje)
-	
-	ui_game_over.show()
-	get_tree().paused = true
+	ui_game_over.show(); get_tree().paused = true
+
+func _on_character_body_2d_jugador_murio() -> void:
+	activar_game_over()
+
+func _on_jugador_vida_extra_usada() -> void:
+	if icono_vida_extra != null: icono_vida_extra.modulate = Color(0.4, 0.4, 0.4, 0.5)
+
+func _on_boton_continuar_logro_pressed() -> void:
+	get_tree().paused = false # Despausamos ANTES de cambiar estados
+	popup_logro.visible = false
+	mostrar_pantalla_game_over()

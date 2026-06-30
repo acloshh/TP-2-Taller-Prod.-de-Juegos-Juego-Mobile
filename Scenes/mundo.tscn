@@ -5,13 +5,19 @@
 [ext_resource type="PackedScene" uid="uid://dp2w6thvjeqfo" path="res://Scenes/plataforma.tscn" id="2_glouy"]
 [ext_resource type="PackedScene" uid="uid://dwhimlg017shj" path="res://Scenes/plataforma_piedra.tscn" id="3_has1v"]
 [ext_resource type="PackedScene" uid="uid://u1wr1q0wy4ti" path="res://Scenes/moneda.tscn" id="3_i8avv"]
+[ext_resource type="PackedScene" uid="uid://cebc82w1e510g" path="res://Scenes/plataforma_movil.tscn" id="3_r6gbd"]
+[ext_resource type="PackedScene" uid="uid://dca5nx8g3r5q2" path="res://Scenes/plataforma_piedra_movil.tscn" id="5_hnw35"]
 [ext_resource type="PackedScene" uid="uid://cqjhrq4wg45lo" path="res://Scenes/item_iman.tscn" id="5_m1vgi"]
 [ext_resource type="Script" uid="uid://cq3nqowntbthj" path="res://Scripts/camera_2d.gd" id="5_yf8a8"]
 [ext_resource type="PackedScene" uid="uid://dlg4oungl00t7" path="res://Scenes/item_jetpack.tscn" id="6_1bodn"]
+[ext_resource type="PackedScene" uid="uid://bmjpx3r3hmysv" path="res://Scenes/pinchos.tscn" id="6_nmfx7"]
 [ext_resource type="Script" uid="uid://bhx4g7jdilr4j" path="res://Scripts/pantalla_game_over.gd" id="6_qxsm7"]
 [ext_resource type="PackedScene" uid="uid://b3eiyy7qtsaxa" path="res://Scenes/item_fantasma.tscn" id="7_ppd06"]
 [ext_resource type="Texture2D" uid="uid://cy81tyitp408b" path="res://Assets_v02/Personaje001_SpriteSheet.png" id="9_ppd06"]
+[ext_resource type="Texture2D" uid="uid://b3173a1fflfet" path="res://Assets_v02/Personaje004_SpriteSheet.png" id="11_27nup"]
+[ext_resource type="Texture2D" uid="uid://di2vsinqj4n8x" path="res://Assets_v02/Personaje003_SpriteSheet.png" id="12_r6gbd"]
 [ext_resource type="Texture2D" uid="uid://71ncfpbxaof1" path="res://Assets_v02/BTN_RetryNormal.png" id="13_rr27p"]
+[ext_resource type="Texture2D" uid="uid://cqksrubogqi7d" path="res://Assets_v02/Personaje002_SpriteSheet.png" id="13_su8pv"]
 [ext_resource type="Texture2D" uid="uid://fy0nyjuuedl6" path="res://Assets_v02/BTN_MenuNormal.png" id="13_w4e5f"]
 [ext_resource type="Texture2D" uid="uid://d0gsrvlrjx6ho" path="res://Assets_v02/BTN_RetryPressed.png" id="14_f3x5k"]
 [ext_resource type="Texture2D" uid="uid://cwefybadd8uj1" path="res://Assets_v02/BTN_MenuPressed.png" id="14_hppdt"]
@@ -107,6 +113,50 @@ region = Rect2(256, 0, 128, 128)
 atlas = ExtResource("9_ppd06")
 region = Rect2(0, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwucr"]
+atlas = ExtResource("11_27nup")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl0kk"]
+atlas = ExtResource("11_27nup")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfclk"]
+atlas = ExtResource("12_r6gbd")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnw41"]
+atlas = ExtResource("12_r6gbd")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dpdg"]
+atlas = ExtResource("12_r6gbd")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epo55"]
+atlas = ExtResource("12_r6gbd")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u6jv"]
+atlas = ExtResource("13_su8pv")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t8tb"]
+atlas = ExtResource("13_su8pv")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf2fw"]
+atlas = ExtResource("13_su8pv")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj2jb"]
+atlas = ExtResource("13_su8pv")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmopk"]
+atlas = ExtResource("13_su8pv")
+region = Rect2(0, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_hnw35"]
 animations = [{
 "frames": [{
@@ -141,7 +191,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_nmh1f")
 }],
 "loop": true,
-"name": &"caida salto",
+"name": &"base_caida_salto",
 "speed": 40.0
 }, {
 "frames": [{
@@ -149,12 +199,85 @@ animations = [{
 "texture": SubResource("AtlasTexture_su8pv")
 }],
 "loop": false,
-"name": &"normal",
+"name": &"base_normal",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwucr")
+}],
+"loop": true,
+"name": &"saltador_caida_salto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl0kk")
+}],
+"loop": true,
+"name": &"saltador_normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfclk")
+}],
+"loop": true,
+"name": &"tigreninja_caida_salto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnw41")
+}],
+"loop": true,
+"name": &"tigreninja_normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dpdg")
+}],
+"loop": true,
+"name": &"tigreninja_pared_derecha",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epo55")
+}],
+"loop": true,
+"name": &"tigreninja_pared_izquierda",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u6jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t8tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf2fw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj2jb")
+}],
+"loop": true,
+"name": &"turista_caida_salto",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmopk")
+}],
+"loop": true,
+"name": &"turista_normal",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glouy"]
-size = Vector2(130, 152)
+size = Vector2(138, 152)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_has1v"]
 
@@ -178,10 +301,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="mundo" type="Node2D" unique_id=1892424039 node_paths=PackedStringArray("jugador", "camara", "ui_game_over", "etiqueta_puntos", "etiqueta_monedas", "icono_vida_extra")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnw35"]
+bg_color = Color(0, 0, 0.88235295, 0.68235296)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.03137255, 0.03529412, 0.4, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="mundo" type="Node2D" unique_id=1892424039 node_paths=PackedStringArray("popup_logro", "etiqueta_mensaje_logro", "jugador", "camara", "ui_game_over", "etiqueta_puntos", "etiqueta_monedas", "icono_vida_extra")]
 script = ExtResource("1_gqidu")
-plataforma_escena = ExtResource("2_glouy")
+escena_madera = ExtResource("2_glouy")
+escena_madera_movil = ExtResource("3_r6gbd")
 escena_plataforma_piedra = ExtResource("3_has1v")
+escena_piedra_movil = ExtResource("5_hnw35")
+escena_pinchos = ExtResource("6_nmfx7")
+popup_logro = NodePath("CanvasLayer/PopUpLogro")
+etiqueta_mensaje_logro = NodePath("CanvasLayer/PopUpLogro/EtiquetaMensajeLogro")
 jugador = NodePath("CharacterBody2D")
 camara = NodePath("Camera2D")
 ui_game_over = NodePath("CanvasLayer/PantallaGameOver")
@@ -225,11 +365,10 @@ suavizado = 0.1
 position = Vector2(0, -7.899994)
 scale = Vector2(1.2, 1.1859375)
 sprite_frames = SubResource("SpriteFrames_hnw35")
-animation = &"caida salto"
-frame_progress = 0.75082046
+animation = &"tigreninja_pared_izquierda"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1724074318]
-position = Vector2(3, -9)
+position = Vector2(1, -9)
 shape = SubResource("RectangleShape2D_glouy")
 
 [node name="AreaIman" type="Area2D" parent="CharacterBody2D" unique_id=537220027]
@@ -404,6 +543,47 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(88, 88)
 sprite_frames = SubResource("SpriteFrames_hppdt")
 
+[node name="PopUpLogro" type="ColorRect" parent="CanvasLayer" unique_id=421863575]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.8666667, 0.7176471)
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PopUpLogro" unique_id=917800618]
+layout_mode = 0
+offset_left = -480.0
+offset_top = -338.0
+offset_right = 487.0
+offset_bottom = 221.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hnw35")
+
+[node name="EtiquetaMensajeLogro" type="Label" parent="CanvasLayer/PopUpLogro" unique_id=1482626499]
+layout_mode = 0
+offset_left = -444.0
+offset_top = -232.0
+offset_right = -404.0
+offset_bottom = -148.0
+theme_override_fonts/font = ExtResource("17_f3x5k")
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+
+[node name="BotonContinuarLogro" type="Button" parent="CanvasLayer/PopUpLogro" unique_id=1279138869]
+layout_mode = 0
+offset_left = -176.0
+offset_top = 5.0
+offset_right = 178.0
+offset_bottom = 97.0
+theme_override_fonts/font = ExtResource("17_f3x5k")
+theme_override_font_sizes/font_size = 64
+text = "Continuar"
+
+[connection signal="jugador_murio" from="CharacterBody2D" to="." method="_on_character_body_2d_jugador_murio"]
 [connection signal="area_entered" from="CharacterBody2D/AreaIman" to="CharacterBody2D" method="_on_area_iman_area_entered"]
 [connection signal="timeout" from="CharacterBody2D/TemporizadorIman" to="CharacterBody2D" method="_on_temporizador_iman_timeout"]
 [connection signal="timeout" from="CharacterBody2D/TemporizadorJetpack" to="." method="_on_temporizador_jetpack_timeout"]
@@ -411,3 +591,4 @@ sprite_frames = SubResource("SpriteFrames_hppdt")
 [connection signal="timeout" from="CharacterBody2D/TemporizadorFantasma" to="CharacterBody2D" method="_on_temporizador_fantasma_timeout"]
 [connection signal="pressed" from="CanvasLayer/PantallaGameOver/ColorRect/Button" to="CanvasLayer/PantallaGameOver" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PantallaGameOver/ColorRect/BotonMenu" to="CanvasLayer/PantallaGameOver" method="_on_boton_volver_pressed"]
+[connection signal="pressed" from="CanvasLayer/PopUpLogro/BotonContinuarLogro" to="." method="_on_boton_continuar_logro_pressed"]

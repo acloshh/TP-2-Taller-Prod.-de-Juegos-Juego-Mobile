@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cebc82w1e510g"]
+
+[ext_resource type="Script" uid="uid://bnxu06xgolqck" path="res://Scripts/plataforma_movil.gd" id="1_jlv7d"]
+[ext_resource type="Texture2D" uid="uid://c1ivr3uoy2or1" path="res://Assets_v02/PlataformaMovil.png" id="2_bon64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_re71i"]
+size = Vector2(239, 64)
+
+[node name="PlataformaMovil" type="AnimatableBody2D" unique_id=1479023805]
+script = ExtResource("1_jlv7d")
+metadata/_edit_vertical_guides_ = [-124.0, 119.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1375071380]
+texture = ExtResource("2_bon64")
+offset = Vector2(0, 26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1524261261]
+position = Vector2(-0.5, 32)
+shape = SubResource("RectangleShape2D_re71i")
+one_way_collision = true
